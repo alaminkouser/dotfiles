@@ -212,7 +212,7 @@ plugins {
 //    - true
 //    - false (Default)
 //
-// simplified_ui true
+simplified_ui true
 
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
@@ -228,7 +228,7 @@ plugins {
 //   - true (default)
 //   - false
 //
-// pane_frames true
+pane_frames false
 
 // Toggle between having Zellij lay out panes according to a predefined set of layouts whenever possible
 // Options:
@@ -284,7 +284,7 @@ plugins {
 // The name of the default layout to load on startup
 // Default: "default"
 //
-// default_layout "compact"
+default_layout "default"
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal
@@ -342,7 +342,7 @@ plugins {
 // or should each user have their own cursor (false)
 // Default: false
 //
-// mirror_session true
+mirror_session true
 
 // The folder in which Zellij will look for layouts
 //
@@ -362,4 +362,10 @@ plugins {
 // metadata info on this session)
 // Default: false
 //
-// disable_session_metadata true
+disable_session_metadata true
+
+ui {
+    pane_frames {
+        hide_session_name true
+    }
+}
