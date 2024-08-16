@@ -21,3 +21,85 @@
 2024/08/15 (15:06:58) | INFO: Running on /dev/pts/1
 2024/08/15 (15:06:58) | INFO: Forcing tty mode: setting 16 color mode and using tty friendly graph symbols
 2024/08/15 (15:06:58) | DEBUG: Shared::init() : Initialized.
+2024/08/15 (15:09:29) | INFO: Quitting! Runtime: 00:02:31
+
+2024/08/15 (15:09:47) | ===> btop++ v.1.3.2
+2024/08/15 (15:09:47) | INFO: Logger set to DEBUG
+2024/08/15 (15:09:47) | DEBUG: Using locale en_GB.UTF-8
+2024/08/15 (15:09:47) | INFO: Running on /dev/pts/1
+2024/08/15 (15:09:47) | INFO: Forcing tty mode: setting 16 color mode and using tty friendly graph symbols
+2024/08/15 (15:09:47) | DEBUG: Shared::init() : Initialized.
+2024/08/15 (15:11:50) | INFO: Quitting! Runtime: 00:02:03
+
+2024/08/15 (15:16:17) | ===> btop++ v.1.3.2
+2024/08/15 (15:16:17) | INFO: Logger set to DEBUG
+2024/08/15 (15:16:17) | DEBUG: Using locale en_GB.UTF-8
+2024/08/15 (15:16:17) | INFO: Running on /dev/pts/2
+2024/08/15 (15:16:17) | INFO: Forcing tty mode: setting 16 color mode and using tty friendly graph symbols
+2024/08/15 (15:16:17) | DEBUG: Shared::init() : Initialized.
+2024/08/15 (16:19:47) | INFO: Quitting! Runtime: 01:03:30
+
+2024/08/15 (16:20:14) | ===> btop++ v.1.3.2
+2024/08/15 (16:20:14) | INFO: Logger set to DEBUG
+2024/08/15 (16:20:14) | DEBUG: Using locale en_GB.UTF-8
+2024/08/15 (16:20:14) | INFO: Running on /dev/pts/2
+2024/08/15 (16:20:14) | INFO: Forcing tty mode: setting 16 color mode and using tty friendly graph symbols
+2024/08/15 (16:20:14) | DEBUG: Shared::init() : Initialized.
+2024/08/15 (16:20:27) | INFO: Quitting! Runtime: 00:00:13
+
+2024/08/15 (16:20:37) | ===> btop++ v.1.3.2
+2024/08/15 (16:20:37) | INFO: Logger set to DEBUG
+2024/08/15 (16:20:37) | DEBUG: Using locale en_GB.UTF-8
+2024/08/15 (16:20:37) | INFO: Running on /dev/pts/2
+2024/08/15 (16:20:37) | INFO: Forcing tty mode: setting 16 color mode and using tty friendly graph symbols
+2024/08/15 (16:20:37) | DEBUG: Shared::init() : Initialized.
+2024/08/15 (19:40:17) | DEBUG: Writing new config file
+2024/08/15 (19:40:17) | INFO: Quitting! Runtime: 03:19:40
+
+2024/08/15 (20:07:08) | ===> btop++ v.1.3.2
+2024/08/15 (20:07:08) | INFO: Logger set to DEBUG
+2024/08/15 (20:07:08) | DEBUG: Using locale en_GB.UTF-8
+2024/08/15 (20:07:08) | INFO: Running on /dev/pts/2
+2024/08/15 (20:07:08) | INFO: Forcing tty mode: setting 16 color mode and using tty friendly graph symbols
+2024/08/15 (20:07:08) | DEBUG: Shared::init() : Initialized.
+2024/08/15 (20:09:07) | INFO: Quitting! Runtime: 00:01:59
+
+2024/08/15 (20:16:07) | ===> btop++ v.1.3.2
+2024/08/15 (20:16:07) | INFO: Logger set to DEBUG
+2024/08/15 (20:16:07) | DEBUG: Using locale en_GB.UTF-8
+2024/08/15 (20:16:07) | INFO: Running on /dev/pts/2
+2024/08/15 (20:16:07) | INFO: Forcing tty mode: setting 16 color mode and using tty friendly graph symbols
+2024/08/15 (20:16:07) | DEBUG: Shared::init() : Initialized.
+2024/08/15 (20:16:17) | INFO: Quitting! Runtime: 00:00:10
+
+2024/08/15 (20:22:53) | ===> btop++ v.1.3.2
+2024/08/15 (20:22:53) | INFO: Logger set to DEBUG
+2024/08/15 (20:22:53) | DEBUG: Using locale en_GB.UTF-8
+2024/08/15 (20:22:53) | INFO: Running on /dev/pts/2
+2024/08/15 (20:22:53) | INFO: Forcing tty mode: setting 16 color mode and using tty friendly graph symbols
+2024/08/15 (20:22:53) | DEBUG: Shared::init() : Initialized.
+2024/08/15 (20:47:52) | INFO: Quitting! Runtime: 00:24:59
+
+2024/08/15 (20:53:40) | ===> btop++ v.1.3.2
+2024/08/15 (20:53:40) | INFO: Logger set to DEBUG
+2024/08/15 (20:53:40) | DEBUG: Using locale en_GB.UTF-8
+2024/08/15 (20:53:40) | INFO: Running on /dev/pts/1
+2024/08/15 (20:53:40) | INFO: Forcing tty mode: setting 16 color mode and using tty friendly graph symbols
+2024/08/15 (20:53:40) | DEBUG: Shared::init() : Initialized.
+2024/08/15 (21:29:37) | INFO: Quitting! Runtime: 00:35:57
+
+2024/08/15 (21:35:46) | ===> btop++ v.1.3.2
+2024/08/15 (21:35:46) | INFO: Logger set to DEBUG
+2024/08/15 (21:35:46) | DEBUG: Using locale en_GB.UTF-8
+2024/08/15 (21:35:46) | INFO: Running on /dev/pts/1
+2024/08/15 (21:35:46) | INFO: Forcing tty mode: setting 16 color mode and using tty friendly graph symbols
+2024/08/15 (21:35:46) | DEBUG: Shared::init() : Initialized.
+2024/08/16 (00:10:42) | INFO: Quitting! Runtime: 02:34:56
+
+2024/08/16 (11:44:02) | ===> btop++ v.1.3.2
+2024/08/16 (11:44:02) | INFO: Logger set to DEBUG
+2024/08/16 (11:44:02) | DEBUG: Using locale en_GB.UTF-8
+2024/08/16 (11:44:02) | INFO: Running on /dev/pts/1
+2024/08/16 (11:44:02) | INFO: Forcing tty mode: setting 16 color mode and using tty friendly graph symbols
+2024/08/16 (11:44:02) | DEBUG: Shared::init() : Initialized.
+2024/08/16 (11:46:38) | INFO: Quitting! Runtime: 00:02:36
