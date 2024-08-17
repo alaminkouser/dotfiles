@@ -168,3 +168,65 @@
 2024/08/17 (11:45:30) | INFO: Running on /dev/pts/1
 2024/08/17 (11:45:30) | DEBUG: Shared::init() : Initialized.
 2024/08/17 (12:12:16) | INFO: Quitting! Runtime: 00:26:46
+
+2024/08/17 (14:05:25) | ===> btop++ v.1.3.2
+2024/08/17 (14:05:25) | INFO: Logger set to DEBUG
+2024/08/17 (14:05:25) | DEBUG: Using locale en_GB.UTF-8
+2024/08/17 (14:05:25) | INFO: Running on /dev/pts/1
+2024/08/17 (14:05:25) | DEBUG: Shared::init() : Initialized.
+2024/08/17 (15:12:27) | INFO: Quitting! Runtime: 01:07:02
+
+2024/08/17 (16:49:06) | ===> btop++ v.1.3.2
+2024/08/17 (16:49:06) | INFO: Logger set to DEBUG
+2024/08/17 (16:49:06) | DEBUG: Using locale en_GB.UTF-8
+2024/08/17 (16:49:06) | INFO: Running on /dev/pts/1
+2024/08/17 (16:49:06) | DEBUG: Shared::init() : Initialized.
+2024/08/17 (16:54:22) | INFO: Quitting! Runtime: 00:05:16
+
+2024/08/17 (16:54:26) | ===> btop++ v.1.3.2
+2024/08/17 (16:54:26) | INFO: Logger set to DEBUG
+2024/08/17 (16:54:26) | DEBUG: Using locale en_GB.UTF-8
+2024/08/17 (16:54:26) | INFO: Running on /dev/pts/1
+2024/08/17 (16:54:26) | DEBUG: Shared::init() : Initialized.
+2024/08/17 (17:16:13) | INFO: Quitting! Runtime: 00:21:47
+
+2024/08/17 (17:16:19) | ===> btop++ v.1.3.2
+2024/08/17 (17:16:19) | INFO: Logger set to DEBUG
+2024/08/17 (17:16:19) | DEBUG: Using locale en_GB.UTF-8
+2024/08/17 (17:16:19) | INFO: Running on /dev/pts/0
+2024/08/17 (17:16:19) | DEBUG: Shared::init() : Initialized.
+2024/08/17 (17:16:20) | INFO: Quitting! Runtime: 00:00:01
+
+2024/08/17 (18:17:36) | ===> btop++ v.1.3.2
+2024/08/17 (18:17:36) | INFO: Logger set to DEBUG
+2024/08/17 (18:17:36) | DEBUG: Using locale en_GB.UTF-8
+2024/08/17 (18:17:36) | INFO: Running on /dev/pts/1
+2024/08/17 (18:17:36) | DEBUG: Shared::init() : Initialized.
+2024/08/17 (18:18:17) | INFO: Quitting! Runtime: 00:00:41
+
+2024/08/17 (18:18:22) | ===> btop++ v.1.3.2
+2024/08/17 (18:18:22) | INFO: Logger set to DEBUG
+2024/08/17 (18:18:22) | DEBUG: Using locale en_GB.UTF-8
+2024/08/17 (18:18:22) | INFO: Running on /dev/pts/1
+2024/08/17 (18:18:22) | DEBUG: Shared::init() : Initialized.
+2024/08/17 (18:18:26) | INFO: Quitting! Runtime: 00:00:04
+
+2024/08/17 (18:18:50) | ===> btop++ v.1.3.2
+2024/08/17 (18:18:50) | INFO: Logger set to DEBUG
+2024/08/17 (18:18:50) | DEBUG: Using locale en_GB.UTF-8
+2024/08/17 (18:18:50) | INFO: Running on /dev/pts/1
+2024/08/17 (18:18:50) | DEBUG: Shared::init() : Initialized.
+2024/08/17 (18:19:07) | INFO: Quitting! Runtime: 00:00:17
+
+2024/08/17 (18:25:27) | ===> btop++ v.1.3.2
+2024/08/17 (18:25:27) | INFO: Logger set to DEBUG
+2024/08/17 (18:25:27) | DEBUG: Using locale en_GB.UTF-8
+2024/08/17 (18:25:27) | INFO: Running on /dev/pts/1
+2024/08/17 (18:25:27) | DEBUG: Shared::init() : Initialized.
+2024/08/17 (19:09:42) | INFO: Quitting! Runtime: 00:44:15
+
+2024/08/17 (19:10:04) | ===> btop++ v.1.3.2
+2024/08/17 (19:10:04) | INFO: Logger set to DEBUG
+2024/08/17 (19:10:04) | DEBUG: Using locale en_GB.UTF-8
+2024/08/17 (19:10:04) | INFO: Running on /dev/pts/1
+2024/08/17 (19:10:04) | DEBUG: Shared::init() : Initialized.
