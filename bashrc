@@ -10,4 +10,3 @@ PATH="$HOME/.local/bin/zig:$PATH"
 
 export DENO_INSTALL="$HOME/.local/bin/deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-
