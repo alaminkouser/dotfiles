@@ -18,7 +18,7 @@ output * bg #000000 solid_color
 # output HDMI-A-1 resolution 2560x1440@74.968Hz position -2560,0
 
 # Start a terminal
-bindsym $mod+Return exec foot
+bindsym $mod+Return exec footclient
 
 # Start Yofi Launcher
 bindsym $mod+x exec ps cax | grep yofi || $HOME/.local/bin/yofi
@@ -87,5 +87,7 @@ input type:touchpad {
 
 default_border none
 focus_follows_mouse no
+
+exec foot --server
 
 include /etc/sway/config.d/*
