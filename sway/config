@@ -66,18 +66,16 @@ bindsym $mod+Shift+0 move container to workspace number 10
 bindsym $mod+space floating toggle
 
 bar {
-    position top
-	# status_command while $HOME/.config/sway/status-command; do sleep 1; done
+	position top
 	status_command sh $HOME/.config/sway/status-command
-
 	status_edge_padding 0
 	status_padding 0
 	colors {
-        statusline #808080
-        background #000000
+		statusline #808080
+		background #000000
 		focused_workspace #808080ff #000000 #808080
         inactive_workspace #00000000 #00000000 #808080
-    }
+	}
 }
 
 input type:touchpad {
