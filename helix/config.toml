@@ -13,3 +13,6 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[editor.gutters.line-numbers]
+min-width = 0
