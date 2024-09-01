@@ -17,6 +17,9 @@ output * bg #000000 solid_color
 
 # output HDMI-A-1 resolution 2560x1440@74.968Hz position -2560,0
 
+# Toggle Display
+bindsym $mod+d exec sh $HOME/.config/sway/display-toggle eDP-1
+
 # Start a terminal
 bindsym $mod+Return exec footclient
 
