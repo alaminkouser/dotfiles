@@ -10,7 +10,7 @@ PATH="$HOME/.local/bin/nvim/bin:$PATH"
 PATH="$HOME/.local/bin/node/bin:$PATH"
 PATH="$HOME/.local/bin/zig:$PATH"
 # PATH="$HOME/.local/bin/pandoc/bin:$PATH"
-# PATH="$HOME/.local/bin/lua:$PATH"
+PATH="$HOME/.local/bin/lua:$PATH"
 # PATH="$HOME/.local/bin/lua-language-server/bin:$PATH"
 # PATH="$HOME/.local/bin/helix:$PATH"
 
