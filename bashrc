@@ -14,6 +14,6 @@ PATH="$HOME/.local/bin/lua:$PATH"
 # PATH="$HOME/.local/bin/lua-language-server/bin:$PATH"
 # PATH="$HOME/.local/bin/helix:$PATH"
 
-# export DENO_INSTALL="$HOME/.local/bin/deno"
-# export PATH="$DENO_INSTALL/bin:$PATH"
+export DENO_INSTALL="$HOME/.local/bin/deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
