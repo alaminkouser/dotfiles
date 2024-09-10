@@ -1,0 +1,5 @@
+@-moz-document url("chrome://browser/content/blanktab.html"), url("about:newtab") {
+    body {
+        background-color: #000000 !important;
+    }
+}

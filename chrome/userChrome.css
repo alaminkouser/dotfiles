@@ -1,0 +1,56 @@
+#navigator-toolbox {
+    display: grid !important;
+    grid-template-columns: auto auto;
+}
+
+#navigator-toolbox #nav-bar {
+    order: -1;
+}
+
+#navigator-toolbox .titlebar-buttonbox {
+    display: none;
+}
+
+#navigator-toolbox .titlebar-buttonbox {
+    display: none;
+}
+
+#navigator-toolbox #tabbrowser-tabs tab {
+    display: none !important;
+}
+
+#navigator-toolbox toolbar#PersonalToolbar {
+    display: none;
+}
+
+#navigator-toolbox hbox.titlebar-spacer[type=pre-tabs] {
+    display: none;
+}
+
+#navigator-toolbox hbox.titlebar-spacer[type=post-tabs] {
+    display: none;
+}
+
+#navigator-toolbox #unified-extensions-button {
+    display: none;
+}
+
+#navigator-toolbox toolbarbutton#PanelUI-menu-button {
+    display: none;
+}
+
+#navigator-toolbox hbox#star-button-box {
+    display: none;
+}
+
+#navigator-toolbox box#tracking-protection-icon-container {
+    display: none;
+}
+
+#navigator-toolbox .tab-icon-image[src="chrome://branding/content/icon32.png"] {
+    display: none;
+}
+
+#main-menubar {
+    display: none;
+}
