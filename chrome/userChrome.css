@@ -1,6 +1,6 @@
 #navigator-toolbox {
-    display: grid !important;
-    grid-template-columns: auto auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
 }
 
 #navigator-toolbox #nav-bar {
@@ -16,10 +16,6 @@
 }
 
 #navigator-toolbox #tabbrowser-tabs tab {
-    display: none !important;
-}
-
-#navigator-toolbox toolbar#PersonalToolbar {
     display: none;
 }
 
@@ -52,5 +48,9 @@
 }
 
 #main-menubar {
+    display: none;
+}
+
+#navigator-toolbox #tabbrowser-tabs {
     display: none;
 }
