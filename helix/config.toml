@@ -1,10 +1,11 @@
 theme = "pop-dark"
 
 [editor]
-line-number = "relative"
 mouse = true
 scrolloff = 0
 rulers = [80]
+gutters = ["diff", "line-numbers"]
+true-color = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -14,5 +15,11 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
-[editor.gutters.line-numbers]
-min-width = 0
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
