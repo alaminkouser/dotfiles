@@ -7,7 +7,7 @@ alias ls="ls -lah --group-directories-first --color"
 alias z="zellij attach --create main"
 alias aria2c="aria2c -x 16 --seed-time=0"
 
-# PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.local/bin/nvim/bin:$PATH"
 PATH="$HOME/.local/bin/node/bin:$PATH"
 PATH="$HOME/.local/bin/zig:$PATH"
