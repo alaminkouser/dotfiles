@@ -1,8 +1,9 @@
 * {
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 12px;
-	padding: 0px;
-	margin: 0px;
+    padding: 0px;
+    margin: 0px;
+    color: #ffffff;
 }
 
 window#waybar {
