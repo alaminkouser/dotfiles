@@ -1,0 +1,56 @@
+* {
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+	padding: 0px;
+	margin: 0px;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+}
+
+button:focused {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+#waybar:not(.empty) #window,
+#network,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#clock {
+	background-color: rgba(0, 0, 0, 0.5);
+	border: 8px;
+	margin: 4px;
+	padding: 4px;
+	border-radius: 8px;
+}
+
+#workspaces button.focused {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+}
+
+button {
+	margin-left: 4px;
+	margin-right: 4px;
+	padding-left: 2px;
+	padding-right: 2px;
+	margin: 4px;
+	border: 4px;
+}
+
+button:hover {
+	box-shadow: none;
+	text-shadow: none;
+	background: none;
+	transition: none;
+	border: none;
+	border-radius: 8px;
+	box-shadow: inherit;
+	text-shadow: inherit;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
