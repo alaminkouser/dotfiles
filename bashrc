@@ -17,3 +17,5 @@ PATH="$HOME/.local/bin/helix/usr/bin:$PATH"
 export DENO_INSTALL="$HOME/.local/bin/deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+export EDITOR="nvim"
+
