@@ -1,8 +1,9 @@
 #navigator-toolbox {
     display: grid;
     grid-template-columns: 1fr auto;
-    background-color: black;
+	background-color: black;
 }
+
 
 #nav-bar-customization-target {
     background-color: black;
