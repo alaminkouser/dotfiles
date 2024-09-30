@@ -1,6 +1,15 @@
 #navigator-toolbox {
     display: grid;
     grid-template-columns: 1fr auto;
+    background-color: black;
+}
+
+#nav-bar-customization-target {
+    background-color: black;
+}
+
+#TabsToolbar {
+    background-color: black;
 }
 
 #navigator-toolbox #nav-bar {
