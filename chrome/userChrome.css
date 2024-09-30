@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 1fr auto;
 	background-color: black;
+	border: none !important;
 }
 
 
@@ -9,7 +10,7 @@
     background-color: black;
 }
 
-#TabsToolbar, #TabsToolbar * {
+#TabsToolbar, #TabsToolbar>* {
     background-color: black;
 }
 
