@@ -3,11 +3,11 @@
     "height": 10,
     "spacing": 0,
     "modules-left": [
-		"wlr/taskbar",
-        "hyprland/window"
+		"hyprland/workspaces",
+		"wlr/taskbar"
     ],
     "modules-center": [
-		"hyprland/workspaces"
+		"hyprland/window"
     ],
     "modules-right": [
         "custom/alsa",
@@ -18,6 +18,11 @@
         "battery",
         "clock",
     ],
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"on-scroll-up": "hyprctl dispatch workspace e+1",
+		"on-scroll-down": "hyprctl dispatch workspace e-1"
+	},
 	"custom/alsa": {
         "exec": "amixer get Master | sed -nre 's/.*\\[off\\].*/      muted/p; s/.*\\[(.*%)\\].*/    \\1/p'",
         "on-click": "amixer set Master toggle; pkill -x -RTMIN+11 waybar",
@@ -32,7 +37,7 @@
 		"on-click": "activate"
 	},    
 	"clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
         "format-alt": "{:%Y%m%d %H%M}"
     },
     "cpu": {
@@ -44,8 +49,7 @@
     },
     "temperature": {
         "critical-threshold": 80,
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format": "{temperatureC}°C ",
     },
     "battery": {
         "states": {
@@ -66,7 +70,7 @@
         "format-ethernet": "{ipaddr}/{cidr}",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "Disconnected!",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     }
 }

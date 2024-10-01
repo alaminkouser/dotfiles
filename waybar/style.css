@@ -1,18 +1,12 @@
 * {
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 12px;
     padding: 0px;
     margin: 0px;
-    color: #ffffff;
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0.75);
-    color: #ffffff;
-}
-
-button:focused {
-	background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0);
+    color: #808080;
 }
 
 #custom-alsa,
@@ -23,16 +17,20 @@ button:focused {
 #temperature,
 #battery,
 #clock {
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.75);
 	border: 8px;
 	margin: 4px;
 	padding: 4px;
 	border-radius: 8px;
 }
 
-#workspaces button.focused {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #ffffff;
+#workspaces button.active {
+    background-color: rgba(0, 0, 0, 0.75);
+	color: #808080;
+}
+
+#workspaces>button {
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 button {
