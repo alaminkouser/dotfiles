@@ -5,6 +5,9 @@
 	border: none !important;
 }
 
+#urlbar-background {
+    background-color: black !important;
+}
 
 #nav-bar-customization-target {
     background-color: black;
