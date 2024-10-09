@@ -54,13 +54,13 @@ do
 	CPU_USAGE
 	OUTPUT="$OUTPUT |  $CPU_USAGE%%"
 	
-	HOSTNAME="$(hostname -I)"
+	HOSTNAME="$(ip -o -4 addr show | grep -oP "(?<=inet\s)\d+(\.\d+){3}" | sed -n "2p")"
 	if [ -z "$HOSTNAME" ]
 	then
 		OUTPUT="$OUTPUT | NO HOSTNAME"
 	else
 		INTERNET_SPEED_METER
-		OUTPUT="$OUTPUT | 󰩟 $(hostname -I | xargs) | $(printf "󰓅 D %.2f KB/s U %.2f KB/s T %.2f KB/s\n" "$INTERNET_SPEED_METER_DOWN" "$INTERNET_SPEED_METER_UP" "$(awk "BEGIN {print ${INTERNET_SPEED_METER_DOWN}+${INTERNET_SPEED_METER_UP}}")")"
+		OUTPUT="$OUTPUT | 󰩟 $(ip -o -4 addr show | grep -oP "(?<=inet\s)\d+(\.\d+){3}" | sed -n "2p") | $(printf "󰓅 D %.2f KB/s U %.2f KB/s T %.2f KB/s\n" "$INTERNET_SPEED_METER_DOWN" "$INTERNET_SPEED_METER_UP" "$(awk "BEGIN {print ${INTERNET_SPEED_METER_DOWN}+${INTERNET_SPEED_METER_UP}}")")"
 	fi
 	
 	OUTPUT="$OUTPUT | $(date +"%Y%m%d [%A] %H:%M:%S")"
