@@ -3,6 +3,8 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 
+xwayland disable
+
 set $mod Mod4
 
 include /etc/sway/config-vars.d/*
