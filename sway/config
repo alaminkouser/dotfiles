@@ -29,7 +29,7 @@ bindsym $mod+Return exec footclient
 bindsym $mod+x exec ps cax | grep yofi || $HOME/.local/bin/yofi
 
 # Start Firefox
-bindsym $mod+b exec firefox-esr
+bindsym $mod+b exec firefox
 
 # Kill focused window
 bindsym $mod+Shift+q kill
