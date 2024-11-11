@@ -5,9 +5,9 @@ alias ls="ls -lah --group-directories-first --color"
 alias z="zellij attach --create main"
 alias aria2c="aria2c -x 16 --seed-time=0"
 
-PATH="$PATH:$HOME/.local/bin/busybox"
-PATH="$HOME/.local/bin:$PATH"
-# PATH="$HOME/.local/bin/nvim/bin:$PATH"
+# PATH="$PATH:$HOME/.local/bin/busybox"
+# PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/bin/nvim/bin:$PATH"
 PATH="$HOME/.local/bin/node/bin:$PATH"
 PATH="$HOME/.local/bin/zig:$PATH"
 # PATH="$HOME/.local/bin/pandoc/bin:$PATH"
@@ -20,6 +20,3 @@ export DENO_INSTALL="$HOME/.local/bin/deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 export EDITOR="nvim"
-
-freshfetch
-
