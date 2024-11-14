@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
-		"neovim/nvim-lspconfig",
+        "neovim/nvim-lspconfig",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -21,5 +21,13 @@ require("lazy").setup({
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/nvim-cmp"
 		}
-	}
+	},
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate"
+    },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin"
+    }
 })
