@@ -8,7 +8,7 @@ alias aria2c="aria2c -x 16 --seed-time=0"
 PATH="$PATH:$HOME/.local/bin/busybox"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.local/bin/nvim/bin:$PATH"
-# PATH="$HOME/.local/bin/node/bin:$PATH"
+PATH="$HOME/.local/bin/node/bin:$PATH"
 PATH="$HOME/.local/bin/zig:$PATH"
 PATH="$HOME/.local/bin/go/bin:$PATH"
 export GOPATH="$HOME/.local/bin/.go"
@@ -18,6 +18,9 @@ PATH="$GOPATH/bin:$PATH"
 # PATH="$HOME/.local/bin/lua-language-server/bin:$PATH"
 # PATH="$HOME/.local/bin/helix/usr/bin:$PATH"
 # PATH="$HOME/.local/bin/sioyek/usr/bin:$PATH"
+
+
+PATH="$HOME/.local/bin/latexmk:$PATH"
 
 export DENO_INSTALL="$HOME/.local/bin/deno"
 export PATH="$DENO_INSTALL/bin:$PATH"

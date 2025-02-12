@@ -5,6 +5,7 @@ vim.opt.expandtab = true
 
 vim.wo.relativenumber = true
 vim.cmd [[set numberwidth=1]]
+vim.cmd [[let &stc="%=%{v:relnum?v:relnum:v:lnum} "]]
 
 vim.cmd [[
   highlight Normal guibg=none
@@ -20,4 +21,3 @@ vim.cmd [[aunmenu PopUp.How-to\ disable\ mouse]]
 
 vim.cmd [[set signcolumn=no]]
 
-vim.cmd [[highlight StatusLine ctermbg=black guibg=black]]
