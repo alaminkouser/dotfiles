@@ -39,6 +39,9 @@ require("lazy").setup({
     dependencies = {
       "nvim-tree/nvim-web-devicons"
     }
+  },
+  {
+    "prichrd/netrw.nvim"
   }
 })
 

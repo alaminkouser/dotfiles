@@ -23,3 +23,4 @@ vim.o.mouse = "nicr"
 
 vim.cmd [[set signcolumn=no]]
 
+vim.cmd [[set colorcolumn=80]]

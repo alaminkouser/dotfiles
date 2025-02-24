@@ -4,6 +4,7 @@ require("main.lspconfig")
 require("main.nvim-cmp")
 
 require("main.netrw")
+require("main.telescope")
 
 require("main.marksman")
 require("main.render-markdown")
