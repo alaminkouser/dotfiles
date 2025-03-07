@@ -19,7 +19,7 @@ PATH="$GOPATH/bin:$PATH"
 # PATH="$HOME/.local/bin/lua-language-server/bin:$PATH"
 # PATH="$HOME/.local/bin/helix/usr/bin:$PATH"
 # PATH="$HOME/.local/bin/sioyek/usr/bin:$PATH"
-
+PATH="$HOME/.local/bin/nu:$PATH"
 
 PATH="$HOME/.local/bin/latexmk:$PATH"
 
@@ -27,3 +27,6 @@ export DENO_INSTALL="$HOME/.local/bin/deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 export EDITOR="nvim"
+
+nu && exit
+
