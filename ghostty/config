@@ -1,0 +1,5 @@
+background = #000000
+
+window-padding-balance = true
+window-padding-color = extend
+mouse-hide-while-typing = true
