@@ -4,6 +4,11 @@ PS2="$> "
 export EDITOR="nvim"
 
 PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/bin/busybox:$PATH"
 PATH="$HOME/.local/bin/nvim/bin:$PATH"
 PATH="$HOME/.local/bin/yazi:$PATH"
 PATH="$HOME/.local/bin/miniconda/bin:$PATH"
+
+# Deno
+export DENO_INSTALL="$HOME/.local/bin/deno"
+export PATH="$DENO_INSTALL/bin:$PATH"

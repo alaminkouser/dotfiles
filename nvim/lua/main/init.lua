@@ -7,5 +7,7 @@ require("main.nvim-treesitter")
 require("main.catppuccin")
 require("main.lualine")
 
+require("main.render-markdown")
+
 require("main.index")
 
