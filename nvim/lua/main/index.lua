@@ -22,3 +22,4 @@ vim.cmd [[aunmenu PopUp.How-to\ disable\ mouse]]
 vim.cmd [[aunmenu PopUp.-2-]]
 
 vim.cmd [[set signcolumn=no]]
+vim.cmd [[set colorcolumn=80]]

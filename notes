@@ -3,7 +3,7 @@
 NOTES="$HOME/.local/share/notes"
 
 function selectFile() {
-  find $NOTES -name "*.md" | while IFS= read -r filePath; do
+  find $NOTES -name "*.md" | tac | while IFS= read -r filePath; do
       cat "$filePath" | tr "\n" " "
       printf ":"
       printf "$filePath" | sed "s|^$NOTES/||"
