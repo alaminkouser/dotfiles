@@ -9,4 +9,3 @@ require("main.lualine")
 
 require("main.index")
 
-
