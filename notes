@@ -1,0 +1,95 @@
+#!/bin/sh
+
+NOTES="$HOME/.local/share/notes"
+
+function selectFile() {
+  find $NOTES -name "*.md" | while IFS= read -r filePath; do
+      printf "$filePath" | sed "s|^$NOTES/||"
+      printf ":"
+      cat "$filePath" | tr "\n" " "
+      printf "\n"
+    done | fzf \
+        --style full \
+        --delimiter ":" \
+        --preview \
+        "CLICOLOR_FORCE=1 COLORTERM=truecolor glow --style dark $NOTES/{1}" |\
+        cut -d ":" -f1
+}
+
+function extractLinks() {
+    find $NOTES -name "*.md" -exec grep -o '\[\[[^]]*\]\]' {} \; | \
+    sed -E 's/\[\[([^|]*)(\|[^]]*)?\]\]/\1/' | \
+    sort | uniq
+}
+
+function checkBrokenLinks() {
+    find $NOTES -name "*.md" | while IFS= read -r filePath; do
+        # Get all links in the current file
+        grep -o '\[\[[^]]*\]\]' "$filePath" | while IFS= read -r link; do
+            # Extract the link text (remove [[ and ]] and any pipe part)
+            linkText=$(echo "$link" | sed -E 's/\[\[([^|]*)(\|[^]]*)?\]\]/\1/')
+            # Check if the linked file exists
+            if [ ! -f "$NOTES/$linkText.md" ]; then
+                printf "Broken link '%s' in file: %s\n" "$linkText" "$(echo "$filePath" | sed "s|^$NOTES/||")"
+            fi
+        done
+    done
+}
+
+if [ "$1" = "new" ]; then
+    filenameID=$(date +%Y%m%d%H%M%S%N)
+    printf "# %s\n\n" "$filenameID" > "$NOTES/$filenameID.md"
+    nvim "$NOTES/$filenameID.md"
+    exit 0
+fi
+
+if [ "$1" = "delete" ]; then
+  selectedFile=$(selectFile)
+  if [ -z "$selectedFile" ]; then
+      printf "No file selected\n"
+      exit 1
+  else
+      printf "Are you sure you want to delete $selectedFile? (y/n): "
+      read -r confirm
+      if [ "$confirm" = "y" ]; then
+          rm "$NOTES/$selectedFile"
+          printf "File deleted\n"
+      else
+          printf "File not deleted\n"
+      fi
+  fi
+  exit 0
+fi
+
+if [ "$1" = "links" ]; then
+    extractLinks
+    exit 0
+fi
+
+if [ "$1" = "check" ]; then
+    checkBrokenLinks
+    exit 0
+fi
+
+if [ "$1" = "help" ]; then
+  printf "Usage: notes [new|delete|links|check|help]\n"
+  printf "  new: Create a new note\n"
+  printf "  delete: Delete a note\n"
+  printf "  links: Show all wiki-style links in notes\n"
+  printf "  check: Check for broken wiki-style links\n"
+  printf "  help: Show this help message\n"
+  exit 0
+fi
+
+selectedFile=$(selectFile)
+
+if [ -z "$selectedFile" ]; then
+    printf "No file selected\n"
+    exit 1
+else
+    $EDITOR "$NOTES/$selectedFile"
+fi
+
+checkBrokenLinks
+deno fmt $NOTES
+exit 0
