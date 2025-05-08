@@ -6,8 +6,28 @@ include /etc/sway/config-vars.d/*
 
 output * bg #000000 solid_color
 
-# Start a terminal
-bindsym $mod+Return exec $HOME/.local/bin/ghostty/bin/ghostty
+# Start Yofi Launcher
+bindsym $mod+Return exec ps cax | grep yofi || $HOME/.local/bin/yofi
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+space floating toggle
+
+# mouse button for dragging.
+floating_modifier $mod normal
+
+bar {
+    position bottom
+
+    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    status_edge_padding 0
+    status_padding 0
+    colors {
+	statusline #808080
+	background #000000
+	focused_workspace #808080ff #000000 #808080
+        inactive_workspace #00000000 #00000000 #808080
+    }
+}
 
 default_border none
 focus_follows_mouse no
