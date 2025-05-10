@@ -10,6 +10,7 @@ function selectFile() {
       printf "\n"
     done | fzf \
         --style minimal \
+        --reverse \
         --delimiter ":" \
         --preview \
         "CLICOLOR_FORCE=1 COLORTERM=truecolor glow --style dark $NOTES/\$(echo {} | rev | cut -d ':' -f1 | rev)" |\
@@ -34,6 +35,11 @@ function checkBrokenLinks() {
             fi
         done
     done
+}
+
+function syncNotes() {
+  printf "SYNCING\n"  
+  rclone sync "$NOTES" "MEGA:/NOTES" &
 }
 
 if [ "$1" = "new" ]; then
@@ -97,5 +103,7 @@ fmt="$(deno fmt $NOTES 2>&1)"
 if [ $? -ne 0 ]; then
     echo "$fmt"
 fi
+
+syncNotes
 
 exit 0
