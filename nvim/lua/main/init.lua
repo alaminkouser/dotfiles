@@ -8,6 +8,7 @@ require("main.catppuccin")
 require("main.lualine")
 
 require("main.render-markdown")
+require("main.autolist")
 
 require("main.index")
 

@@ -29,6 +29,12 @@ bar {
     }
 }
 
+
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
 default_border none
 focus_follows_mouse no
 

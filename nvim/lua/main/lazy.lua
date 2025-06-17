@@ -57,6 +57,16 @@ require("lazy").setup({
         "nvim-tree/nvim-web-devicons"
       },
       opts = {}
+    },
+    {
+      "gaoDean/autolist.nvim",
+      ft = {
+        "markdown",
+        "text",
+        "tex",
+        "plaintex",
+        "norg"
+      }
     }
   }
 })

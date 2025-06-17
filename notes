@@ -39,7 +39,9 @@ function checkBrokenLinks() {
 
 function syncNotes() {
   printf "SYNCING\n"  
-  rclone sync "$NOTES" "MEGA:/NOTES" &
+  cd $NOTES && git add --all
+  cd $NOTES && git commit -m "UPDATE"
+  cd $NOTES && git push
 }
 
 if [ "$1" = "new" ]; then
