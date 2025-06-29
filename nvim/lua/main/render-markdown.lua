@@ -315,7 +315,7 @@ require("render-markdown").setup({
         -- | <number> | a hard coded width value |
         -- | full     | full width of the window |
         -- If a float < 1 is provided it is treated as a percentage of available window space.
-        width = "full",
+        width = 80,
         -- Amount of margin to add to the left of dash.
         -- If a float < 1 is provided it is treated as a percentage of available window space.
         left_margin = 0,

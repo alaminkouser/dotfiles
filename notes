@@ -38,10 +38,7 @@ function checkBrokenLinks() {
 }
 
 function syncNotes() {
-  printf "SYNCING\n"  
-  cd $NOTES && git add --all
-  cd $NOTES && git commit -m "UPDATE"
-  cd $NOTES && git push
+  rclone sync $NOTES MEGA:NOTES --progress --ignore-times --quiet --stats=0 > /dev/null 2>&1 &
 }
 
 if [ "$1" = "new" ]; then
@@ -66,6 +63,7 @@ if [ "$1" = "delete" ]; then
           printf "File not deleted\n"
       fi
   fi
+  syncNotes
   exit 0
 fi
 
