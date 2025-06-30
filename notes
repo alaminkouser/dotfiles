@@ -65,14 +65,14 @@ function endRun() {
 }
 
 function helpText() {
-    printf "Usage: notes [c|r|u|d|sync]\n"
-    printf "┌─────────────────────────────────┐\n"
-    printf "│  c    :    Create a new note    │\n" 
-    printf "│  r    :    Read a note          │\n"
-    printf "│  u    :    Update a note        │\n"
-    printf "│  d    :    Delete a note        │\n"
-    printf "│  sync :    Sync all notes       │\n"
-    printf "└─────────────────────────────────┘\n"
+    printf "      Usage: notes [c|r|u|d|sync]\n"
+    printf "  ┌─────────────────────────────────┐\n"
+    printf "  │  c    :    Create a new note    │\n" 
+    printf "  │  r    :    Read a note          │\n"
+    printf "  │  u    :    Update a note        │\n"
+    printf "  │  d    :    Delete a note        │\n"
+    printf "  │  sync :    Sync all notes       │\n"
+    printf "  └─────────────────────────────────┘\n"
 }
 
 if [ $# -gt 1 ]; then
@@ -84,7 +84,6 @@ if [ "$1" = "sync" ]; then
     endRun
     exit 0
 fi
-
 
 if [ "$1" = "c" ]; then
     filenameID=$(date +%Y%m%d%H%M%S%N)
@@ -123,19 +122,18 @@ if [ "$1" = "d" ]; then
     if [ -z "$selectedFile" ]; then
         printf "No file selected\n"
     else
-        printf "Are you sure you want to delete $selectedFile? (y/n): "
+        firstLine=$(head -n 1 "$NOTES/$selectedFile")
+        printf "Are you sure you want to delete \"$firstLine\"? (y/n): "
         read -r confirm
         if [ "$confirm" = "y" ]; then
             rm "$NOTES/$selectedFile"
             endRun "$selectedFile"
-            printf "File deleted\n"
         else
             printf "File not deleted\n"
         fi
     fi
     exit 0
 fi
-
 
 helpText
 
