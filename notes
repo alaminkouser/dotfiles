@@ -2,6 +2,15 @@
 
 NOTES="$HOME/.local/share/notes"
 
+TOOLS="fzf glow deno rclone"
+
+for tool in $TOOLS; do
+  which $tool > /dev/null 2>&1 || {
+    echo "$tool not found"
+    exit 1
+  }
+done
+
 function selectFile() {
   find $NOTES -name "*.md" | tac | while IFS= read -r filePath; do
       cat "$filePath" | tr "\n" " "
@@ -15,12 +24,6 @@ function selectFile() {
         --preview \
         "CLICOLOR_FORCE=1 COLORTERM=truecolor glow --style dark $NOTES/\$(echo {} | rev | cut -d ':' -f1 | rev)" |\
         rev | cut -d ":" -f1 | rev
-}
-
-function extractLinks() {
-    find $NOTES -name "*.md" -exec grep -o '\[\[[^]]*\]\]' {} \; | \
-    sed -E 's/\[\[([^|]*)(\|[^]]*)?\]\]/\1/' | \
-    sort | uniq
 }
 
 function checkBrokenLinks() {
@@ -41,69 +44,85 @@ function syncNotes() {
   rclone sync $NOTES MEGA:NOTES --progress --ignore-times --quiet --stats=0 > /dev/null 2>&1 &
 }
 
-if [ "$1" = "new" ]; then
+function endRun() {
+    echo "Ending run"
+    fmt="$(deno fmt --line-width 80 $NOTES 2>&1)"
+    if [ $? -ne 0 ]; then
+        echo "$fmt"
+    fi
+    checkBrokenLinks
+    syncNotes
+}
+
+function helpText() {
+    printf "Usage: notes [c|r|u|d]\n"
+    printf "  c: Create a new note\n"
+    printf "  r: Read a note\n"
+    printf "  u: Update a note\n"
+    printf "  d: Delete a note\n"
+}
+
+if [ $# -gt 1 ]; then
+    helpText
+    endRun
+    exit 0
+fi
+
+
+if [ "$1" = "c" ]; then
     filenameID=$(date +%Y%m%d%H%M%S%N)
     printf "# %s\n\n" "$filenameID" > "$NOTES/$filenameID.md"
     nvim "$NOTES/$filenameID.md"
+    endRun
     exit 0
 fi
 
-if [ "$1" = "delete" ]; then
-  selectedFile=$(selectFile)
-  if [ -z "$selectedFile" ]; then
-      printf "No file selected\n"
-      exit 1
-  else
-      printf "Are you sure you want to delete $selectedFile? (y/n): "
-      read -r confirm
-      if [ "$confirm" = "y" ]; then
-          rm "$NOTES/$selectedFile"
-          printf "File deleted\n"
-      else
-          printf "File not deleted\n"
-      fi
-  fi
-  syncNotes
-  exit 0
-fi
-
-if [ "$1" = "links" ]; then
-    extractLinks
+if [ "$1" = "r" ]; then
+    selectedFile=$(selectFile)
+    if [ -z "$selectedFile" ]; then
+        printf "No file selected\n"
+        endRun
+        exit 1
+    else
+        glow "$NOTES/$selectedFile"
+    fi
+    endRun
     exit 0
 fi
 
-if [ "$1" = "check" ]; then
-    checkBrokenLinks
+if [ "$1" = "u" ]; then
+    selectedFile=$(selectFile)
+    if [ -z "$selectedFile" ]; then
+        printf "No file selected\n"
+        endRun
+        exit 1
+    else
+        nvim "$NOTES/$selectedFile"
+    fi
+    endRun
     exit 0
 fi
 
-if [ "$1" = "help" ]; then
-  printf "Usage: notes [new|delete|links|check|help]\n"
-  printf "  new: Create a new note\n"
-  printf "  delete: Delete a note\n"
-  printf "  links: Show all wiki-style links in notes\n"
-  printf "  check: Check for broken wiki-style links\n"
-  printf "  help: Show this help message\n"
-  exit 0
+if [ "$1" = "d" ]; then
+    selectedFile=$(selectFile)
+    if [ -z "$selectedFile" ]; then
+        printf "No file selected\n"
+    else
+        printf "Are you sure you want to delete $selectedFile? (y/n): "
+        read -r confirm
+        if [ "$confirm" = "y" ]; then
+            rm "$NOTES/$selectedFile"
+            printf "File deleted\n"
+        else
+            printf "File not deleted\n"
+        fi
+    fi
+    endRun
+    exit 0
 fi
 
-selectedFile=$(selectFile)
 
-if [ -z "$selectedFile" ]; then
-    printf "No file selected\n"
-    exit 1
-else
-    $EDITOR "$NOTES/$selectedFile"
-fi
+helpText
 
-checkBrokenLinks
-
-fmt="$(deno fmt $NOTES 2>&1)"
-
-if [ $? -ne 0 ]; then
-    echo "$fmt"
-fi
-
-syncNotes
-
+endRun
 exit 0
