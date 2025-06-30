@@ -41,29 +41,46 @@ function checkBrokenLinks() {
 }
 
 function syncNotes() {
-  rclone sync $NOTES MEGA:NOTES --progress --ignore-times --quiet --stats=0 > /dev/null 2>&1 &
+    if [ "$1" = "" ]; then
+        printf "SYNCING: %s\n" "All Notes"
+        rclone sync $NOTES MEGA:NOTES --refresh-times --metadata --ignore-times --progress
+    else
+        if [ -f "$NOTES/$1" ]; then
+            printf "SYNCING: %s\n" "$1"
+            rclone sync $NOTES/$1 MEGA:NOTES --refresh-times --metadata --ignore-times --quiet --stats=0 --include "$NOTES/$1" > /dev/null 2>&1 &
+        else
+            printf "DELETING: %s\n" "$1"
+            rclone delete MEGA:NOTES/$1 --quiet --stats=0 > /dev/null 2>&1 &
+        fi
+    fi
 }
 
 function endRun() {
-    echo "Ending run"
     fmt="$(deno fmt --line-width 80 $NOTES 2>&1)"
     if [ $? -ne 0 ]; then
         echo "$fmt"
     fi
     checkBrokenLinks
-    syncNotes
+    syncNotes "$1"
 }
 
 function helpText() {
-    printf "Usage: notes [c|r|u|d]\n"
-    printf "  c: Create a new note\n"
-    printf "  r: Read a note\n"
-    printf "  u: Update a note\n"
-    printf "  d: Delete a note\n"
+    printf "Usage: notes [c|r|u|d|sync]\n"
+    printf "┌─────────────────────────────────┐\n"
+    printf "│  c    :    Create a new note    │\n" 
+    printf "│  r    :    Read a note          │\n"
+    printf "│  u    :    Update a note        │\n"
+    printf "│  d    :    Delete a note        │\n"
+    printf "│  sync :    Sync all notes       │\n"
+    printf "└─────────────────────────────────┘\n"
 }
 
 if [ $# -gt 1 ]; then
     helpText
+    exit 0
+fi
+
+if [ "$1" = "sync" ]; then
     endRun
     exit 0
 fi
@@ -73,7 +90,7 @@ if [ "$1" = "c" ]; then
     filenameID=$(date +%Y%m%d%H%M%S%N)
     printf "# %s\n\n" "$filenameID" > "$NOTES/$filenameID.md"
     nvim "$NOTES/$filenameID.md"
-    endRun
+    endRun "$filenameID.md"
     exit 0
 fi
 
@@ -81,12 +98,11 @@ if [ "$1" = "r" ]; then
     selectedFile=$(selectFile)
     if [ -z "$selectedFile" ]; then
         printf "No file selected\n"
-        endRun
         exit 1
     else
         glow "$NOTES/$selectedFile"
     fi
-    endRun
+    endRun "$selectedFile"
     exit 0
 fi
 
@@ -94,12 +110,11 @@ if [ "$1" = "u" ]; then
     selectedFile=$(selectFile)
     if [ -z "$selectedFile" ]; then
         printf "No file selected\n"
-        endRun
         exit 1
     else
         nvim "$NOTES/$selectedFile"
     fi
-    endRun
+    endRun "$selectedFile"
     exit 0
 fi
 
@@ -112,17 +127,16 @@ if [ "$1" = "d" ]; then
         read -r confirm
         if [ "$confirm" = "y" ]; then
             rm "$NOTES/$selectedFile"
+            endRun "$selectedFile"
             printf "File deleted\n"
         else
             printf "File not deleted\n"
         fi
     fi
-    endRun
     exit 0
 fi
 
 
 helpText
 
-endRun
 exit 0
