@@ -19,10 +19,11 @@ function selectFile() {
       printf "\n"
     done | fzf \
         --style minimal \
+        --bind change:top \
         --reverse \
         --delimiter ":" \
         --preview \
-        "CLICOLOR_FORCE=1 COLORTERM=truecolor glow --style dark $NOTES/\$(echo {} | rev | cut -d ':' -f1 | rev)" |\
+        "CLICOLOR_FORCE=1 COLORTERM=truecolor glow -w 0 --style dark $NOTES/\$(echo {} | rev | cut -d ':' -f1 | rev)" |\
         rev | cut -d ":" -f1 | rev
 }
 
@@ -99,7 +100,7 @@ if [ "$1" = "r" ]; then
         printf "No file selected\n"
         exit 1
     else
-        glow "$NOTES/$selectedFile"
+        glow -w 0 "$NOTES/$selectedFile"
     fi
     endRun "$selectedFile"
     exit 0
