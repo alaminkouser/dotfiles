@@ -19,5 +19,8 @@ PATH="$HOME/.local/bin/helix:$PATH"
 export DENO_INSTALL="$HOME/.local/bin/deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+# Nushell
+PATH="$HOME/.local/bin/nushell:$PATH"
+
 # Dotnet
 export PATH="$HOME/.dotnet:$PATH" && export DOTNET_ROOT="$HOME/.dotnet"
