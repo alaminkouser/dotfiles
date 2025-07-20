@@ -3,3 +3,4 @@ vim.diagnostic.config({
 })
 
 require("main.lspconfig-list.marksman")
+require("main.lspconfig-list.nushell")
