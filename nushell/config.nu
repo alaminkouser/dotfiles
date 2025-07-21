@@ -10,6 +10,8 @@ $env.PROMPT_COMMAND_RIGHT = {
    $"(ansi white_dimmed)" + " : " + (((sys mem | get used | into int) / (sys mem | get total | into int)) * 100 | into string --decimals 2) + "%" + $"(ansi reset)"
 }
 
+alias ls = ls -a
+
 $env.path ++= [
   "~/.local/bin"
 ]
