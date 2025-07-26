@@ -46,13 +46,7 @@ function syncNotes() {
         printf "SYNCING: %s\n" "All Notes"
         rclone sync $NOTES DROPBOX:NOTES --refresh-times --metadata --ignore-times --progress
     else
-        if [ -f "$NOTES/$1" ]; then
-            printf "SYNCING: %s\n" "$1"
-            rclone sync $NOTES/$1 DROPBOX:NOTES --refresh-times --metadata --ignore-times --quiet --stats=0 --include "$NOTES/$1" > /dev/null 2>&1 &
-        else
-            printf "DELETING: %s\n" "$1"
-            rclone delete DROPBOX:NOTES/$1 --quiet --stats=0 > /dev/null 2>&1 &
-        fi
+        rclone sync --check-first --checksum $NOTES DROPBOX:/NOTES > /dev/null 2>&1 &
     fi
 }
 
