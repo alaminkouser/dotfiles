@@ -24,6 +24,8 @@ vim.cmd [[aunmenu PopUp.-2-]]
 vim.cmd [[set signcolumn=no]]
 vim.cmd [[set colorcolumn=80]]
 
+vim.opt.wrap = false
+
 vim.api.nvim_create_user_command("Ex", function()
   vim.cmd("Yazi")
 end, {})
