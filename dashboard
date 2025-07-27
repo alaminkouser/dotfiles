@@ -1,0 +1,29 @@
+#!/bin/sh
+
+NOTES="$HOME/.local/share/notes"
+
+# Function to find calendar files with today's date or future dates
+upcoming_events_file_list() {
+    if [ -d "$NOTES" ]; then
+        today=$(date +%Y%m%d)
+        
+        # Find all files and check for date pattern at the beginning
+        find "$NOTES" -type f -exec grep -l "^# [0-9]\{8\}" {} \; 2>/dev/null | while read -r file; do
+            # Extract the date from the first line
+            file_date=$(head -n 1 "$file" | sed -n "s/^# \([0-9]\{8\}\).*/\1/p")
+            
+            # Compare dates: if file_date >= today, print the date and filename
+            if [ -n "$file_date" ] && [ "$file_date" -ge "$today" ]; then
+                printf "%s %s\n" "$file_date" "$file"
+            fi
+        done | sort | cut -d " " -f2-
+    else
+        echo "Notes directory not found: $NOTES"
+    fi
+}
+
+# Call the function to display calendar files
+for file in $(upcoming_events_file_list); do
+    # Display the file content using glow
+    glow "$file"
+done

@@ -25,6 +25,9 @@ vim.cmd [[set signcolumn=no]]
 vim.cmd [[set colorcolumn=80]]
 
 vim.opt.wrap = false
+vim.cmd [[
+  set whichwrap+=<,>,[,]
+]]
 
 vim.api.nvim_create_user_command("Ex", function()
   vim.cmd("Yazi")
