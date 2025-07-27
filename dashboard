@@ -22,8 +22,11 @@ upcoming_events_file_list() {
     fi
 }
 
+curl "https://wttr.in/Dhaka?format=%C%20%c%t%20(Feels%20Like:%20%f)\nMoon:%20%m%20(Day:%20%M)\nSunrise:%20%S%20|%20Sunset:%20%s\nWind:%20%w" > /dev/null 2>&1
+
 # Call the function to display calendar files
 for file in $(upcoming_events_file_list); do
     # Display the file content using glow
     glow "$file"
+    sleep 2
 done
