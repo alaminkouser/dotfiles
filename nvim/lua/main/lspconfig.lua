@@ -16,7 +16,7 @@ require("main.lspconfig-list.nushell")
 local function show_diagnostics_noice()
   local diagnostics = vim.diagnostic.get()
   if vim.tbl_isempty(diagnostics) then
-    require("noice").notify("✅ No diagnostics", "info", { title = "LSP Diagnostics" })
+    require("noice").notify("✅ No Issues", "info", { title = "LSP Diagnostics" })
     return
   end
 
@@ -31,9 +31,18 @@ local function show_diagnostics_noice()
   end
 end
 
--- Autocmd: Show diagnostics when they change
+-- Run once at start for all files
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function()
+    vim.defer_fn(show_diagnostics_noice, 1000)
+  end,
+})
+
+-- Autocmd: Show diagnostics when they change in markdown files
 vim.api.nvim_create_autocmd("DiagnosticChanged", {
   callback = function()
-    vim.defer_fn(show_diagnostics_noice, 100)  -- slight delay to avoid race
+    if vim.bo.filetype == "markdown" then
+      vim.defer_fn(show_diagnostics_noice, 100)
+    end
   end,
 })
