@@ -1,5 +1,12 @@
 vim.diagnostic.config({
-  update_in_insert = true
+  virtual_text = {
+    spacing = 2,
+    prefix = "●"
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = true,
+  severity_sort = true,
 })
 
 require("main.lspconfig-list.denols")
