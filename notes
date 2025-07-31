@@ -2,7 +2,7 @@
 
 NOTES="$HOME/.local/share/notes"
 
-TOOLS="fzf glow deno rclone"
+TOOLS="fzf glow deno rclone pandoc"
 
 for tool in $TOOLS; do
   which $tool > /dev/null 2>&1 || {
@@ -23,19 +23,19 @@ function selectFile() {
         --reverse \
         --delimiter ":" \
         --preview \
-        "CLICOLOR_FORCE=1 COLORTERM=truecolor glow -w 0 --style dark $NOTES/\$(echo {} | rev | cut -d ':' -f1 | rev)" |\
+        "sed -E \"s/\[\[[^|]+\|([^]]+)\]\]/\[\[\1\]\]/g\"  \"$NOTES/\$(echo {} | rev | cut -d ":" -f1 | rev)\" | pandoc -f markdown -t markdown --wrap=none | CLICOLOR_FORCE=1 COLORTERM=truecolor glow -w 0 --style dark" |\
         rev | cut -d ":" -f1 | rev
 }
 
 function checkBrokenLinks() {
     find $NOTES -name "*.md" | while IFS= read -r filePath; do
         # Get all links in the current file
-        grep -o '\[\[[^]]*\]\]' "$filePath" | while IFS= read -r link; do
+        grep -o "\[\[[^]]*\]\]" "$filePath" | while IFS= read -r link; do
             # Extract the link text (remove [[ and ]] and any pipe part)
-            linkText=$(echo "$link" | sed -E 's/\[\[([^|]*)(\|[^]]*)?\]\]/\1/')
+            linkText=$(echo "$link" | sed -E "s/\[\[([^|]*)(\|[^]]*)?\]\]/\1/")
             # Check if the linked file exists
             if [ ! -f "$NOTES/$linkText.md" ]; then
-                printf "Broken link '%s' in file: %s\n" "$linkText" "$(echo "$filePath" | sed "s|^$NOTES/||")"
+                printf "Broken link [["%s"]] in file: %s\n" "$linkText" "$(echo "$filePath" | sed "s|^$NOTES/||")"
             fi
         done
     done

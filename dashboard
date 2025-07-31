@@ -19,7 +19,7 @@ upcoming_events_file_list() {
     fi
 }
 
-# curl -s "https://wttr.in/Dhaka?format=%C%20%c%t%20(Feels%20Like:%20%f)\nMoon:%20%m%20(Day:%20%M)\nSunrise:%20%S%20|%20Sunset:%20%s\nWind:%20%w\n"
+curl -s "https://wttr.in/Dhaka?format=%C%20%c%t%20(Feels%20Like:%20%f)\nMoon:%20%m%20(Day:%20%M)\nSunrise:%20%S%20|%20Sunset:%20%s\nWind:%20%w\n"
 
 printf "\n"
 
