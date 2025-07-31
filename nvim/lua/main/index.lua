@@ -29,6 +29,10 @@ vim.cmd [[
   set whichwrap+=<,>,[,]
 ]]
 
+vim.opt.guicursor = {
+  "i-c:ver25-blinkwait500-blinkon300-blinkoff300"
+}
+
 vim.api.nvim_create_user_command("Ex", function()
   vim.cmd("Yazi")
 end, {})
