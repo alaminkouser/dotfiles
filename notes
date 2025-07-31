@@ -83,7 +83,7 @@ fi
 if [ "$1" = "c" ]; then
     filenameID=$(date +%Y%m%d%H%M%S%N)
     printf "# %s\n\n" "$filenameID" > "$NOTES/$filenameID.md"
-    nvim "$NOTES/$filenameID.md"
+    $EDITOR "$NOTES/$filenameID.md"
     endRun "$filenameID.md"
     exit 0
 fi
@@ -106,7 +106,7 @@ if [ "$1" = "u" ]; then
         printf "No file selected\n"
         exit 1
     else
-        nvim "$NOTES/$selectedFile"
+        $EDITOR "$NOTES/$selectedFile"
     fi
     endRun "$selectedFile"
     exit 0

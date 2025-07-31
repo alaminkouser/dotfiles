@@ -6,27 +6,29 @@ NOTES="$HOME/.local/share/notes"
 upcoming_events_file_list() {
     if [ -d "$NOTES" ]; then
         today=$(date +%Y%m%d)
-        
-        # Find all files and check for date pattern at the beginning
         find "$NOTES" -type f -exec grep -l "^# [0-9]\{8\}" {} \; 2>/dev/null | while read -r file; do
             # Extract the date from the first line
             file_date=$(head -n 1 "$file" | sed -n "s/^# \([0-9]\{8\}\).*/\1/p")
-            
             # Compare dates: if file_date >= today, print the date and filename
             if [ -n "$file_date" ] && [ "$file_date" -ge "$today" ]; then
                 printf "%s %s\n" "$file_date" "$file"
             fi
         done | sort | cut -d " " -f2-
     else
-        echo "Notes directory not found: $NOTES"
+        printf "Notes directory not found: $NOTES\n"
     fi
 }
 
-curl "https://wttr.in/Dhaka?format=%C%20%c%t%20(Feels%20Like:%20%f)\nMoon:%20%m%20(Day:%20%M)\nSunrise:%20%S%20|%20Sunset:%20%s\nWind:%20%w" > /dev/null 2>&1
+# curl -s "https://wttr.in/Dhaka?format=%C%20%c%t%20(Feels%20Like:%20%f)\nMoon:%20%m%20(Day:%20%M)\nSunrise:%20%S%20|%20Sunset:%20%s\nWind:%20%w\n"
+
+printf "\n"
+
+cal -3
+
+printf "\n"
 
 # Call the function to display calendar files
 for file in $(upcoming_events_file_list); do
     # Display the file content using glow
-    glow "$file"
-    sleep 2
+    sed -E "s/\[\[[^|]+\|([^]]+)\]\]/\[\[\1\]\]/g" "$file" | pandoc -f markdown -t markdown --wrap=none | glow
 done
