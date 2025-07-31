@@ -44,3 +44,16 @@ end
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
+
+cmp.setup.filetype("markdown", {
+  sources = cmp.config.sources({
+    { name = "buffer" },    -- Suggest words from the current buffer
+    { name = "luasnip" },   -- Optional: Snippet completion
+  }),
+  mapping = cmp.mapping.preset.insert({
+    ["<Tab>"] = cmp.mapping.select_next_item(),
+    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+  }),
+})
+

@@ -94,7 +94,7 @@ if [ "$1" = "r" ]; then
         printf "No file selected\n"
         exit 1
     else
-        glow -w 0 "$NOTES/$selectedFile"
+        sed -E "s/\[\[[^|]+\|([^]]+)\]\]/\[\[\1\]\]/g"  "$NOTES/$selectedFile" | pandoc -f markdown -t markdown --wrap=none | glow -w 0 --style dark
     fi
     endRun "$selectedFile"
     exit 0
