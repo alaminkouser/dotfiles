@@ -48,6 +48,7 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorHold" }, {
   end,
 })
 
+local last_result_was_empty = nil
 local function check_marksman_lsp_issues()
   local client = nil
   -- find marksman client among all active LSP clients
@@ -78,11 +79,18 @@ local function check_marksman_lsp_issues()
     end
   end
 
-  if #results ~= 0 then
+  if #results == 0 then
+    -- only notify if previous check had some issues or it's the first run (last_result_was_empty == nil)
+    if last_result_was_empty == false or last_result_was_empty == nil then
+      vim.notify("No Issues Found.", "info", { title = "Status" })
+    end
+    last_result_was_empty = true
+  else
     for _, item in ipairs(results) do
       local msg = item.message
       vim.notify(msg, vim.log.levels.ERROR)
     end
+    last_result_was_empty = false
   end
 end
 
