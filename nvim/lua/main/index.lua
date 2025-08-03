@@ -30,7 +30,7 @@ vim.cmd [[
 ]]
 
 vim.opt.guicursor = {
-  "i-c:ver25-blinkwait500-blinkon300-blinkoff300"
+  "i-c-ci:ver25-blinkwait500-blinkon300-blinkoff300"
 }
 
 vim.cmd [[
