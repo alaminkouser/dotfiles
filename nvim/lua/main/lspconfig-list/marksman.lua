@@ -9,7 +9,6 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
   end,
 })
 
-
 local last_pos = nil
 
 vim.api.nvim_create_autocmd({ "CursorMoved", "CursorHold" }, {
@@ -50,7 +49,8 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorHold" }, {
             { "╰", "CmpBorder" },
             { "│", "CmpBorder" },
           },
-          focus = false
+          focus = false,
+          max_height = 20
         })
       end)
     end, 100)
