@@ -1,14 +1,5 @@
 require("lspconfig").marksman.setup{}
 
--- Autocmd: Show diagnostics when they change in markdown files
-vim.api.nvim_create_autocmd("DiagnosticChanged", {
-  callback = function()
-    if vim.bo.filetype == "markdown" then
-      vim.defer_fn(show_diagnostics_noice, 100)
-    end
-  end,
-})
-
 local last_pos = nil
 
 vim.api.nvim_create_autocmd({ "CursorMoved", "CursorHold" }, {
@@ -54,5 +45,56 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorHold" }, {
         })
       end)
     end, 100)
+  end,
+})
+
+local function check_marksman_lsp_issues()
+  local client = nil
+  -- find marksman client among all active LSP clients
+  for _, c in pairs(vim.lsp.get_clients()) do
+    if c.name == "marksman" then
+      client = c
+      break
+    end
+  end
+
+  if not client then
+    return
+  end
+
+  local results = {}
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    local diags = vim.diagnostic.get(bufnr, { namespace = vim.lsp.diagnostic.get_namespace(client.id) })
+    if diags and #diags > 0 then
+      local fname = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":t:r")
+      for _, diag in ipairs(diags) do
+        table.insert(results, {
+          file = fname,
+          lnum = diag.lnum + 1,
+          message = fname .. " (Line: " .. tostring(diag.lnum + 1) .. ")" .. "\n" .. diag.message,
+          severity = diag.severity,
+        })
+      end
+    end
+  end
+
+  if #results ~= 0 then
+    for _, item in ipairs(results) do
+      local msg = item.message
+      vim.notify(msg, vim.log.levels.ERROR)
+    end
+  end
+end
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    vim.defer_fn(check_marksman_lsp_issues, 500)
+  end,
+})
+
+vim.api.nvim_create_autocmd({"TextChanged", "TextChangedI"}, {
+  pattern = "*",
+  callback = function()
+    vim.defer_fn(check_marksman_lsp_issues, 500)
   end,
 })
