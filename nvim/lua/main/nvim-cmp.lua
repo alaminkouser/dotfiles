@@ -51,8 +51,8 @@ cmp.setup.cmdline(":", {
 	},
 	{
 		{ name = "cmdline" }
-    }),
-    matching = { disallow_symbol_nonprefix_matching = false }
+  }),
+  matching = { disallow_symbol_nonprefix_matching = false }
 })
 
 local has_words_before = function()
