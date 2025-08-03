@@ -9,10 +9,6 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
-require("main.lspconfig-list.denols")
-require("main.lspconfig-list.marksman")
-require("main.lspconfig-list.nushell")
-
 local function show_diagnostics_noice()
   local diagnostics = vim.diagnostic.get()
   if vim.tbl_isempty(diagnostics) then
@@ -38,11 +34,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- Autocmd: Show diagnostics when they change in markdown files
-vim.api.nvim_create_autocmd("DiagnosticChanged", {
-  callback = function()
-    if vim.bo.filetype == "markdown" then
-      vim.defer_fn(show_diagnostics_noice, 100)
-    end
-  end,
-})
+require("main.lspconfig-list.denols")
+require("main.lspconfig-list.marksman")
+require("main.lspconfig-list.nushell")
