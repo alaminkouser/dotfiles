@@ -48,6 +48,7 @@ function checkFiles() {
         done
 
     done < <(find "$NOTES" -name "*.md")
+
     # Print duplicate dates in DATE_LIST (i.e., dates that appear in multiple calendar items)
     echo -e "$DATE_LIST" | sort | uniq -d | while read -r dup_date; do
         if [ -n "$dup_date" ]; then
