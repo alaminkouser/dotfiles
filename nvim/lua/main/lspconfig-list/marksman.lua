@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorHold" }, {
     timer = vim.loop.new_timer()
     timer:start(150, 0, vim.schedule_wrap(function()
       -- Ensure LSP client is attached
-      local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+      local clients = vim.lsp.get_clients({ bufnr = 0 })
       if not vim.tbl_isempty(clients) then
         vim.lsp.buf.hover(nil, { focus = false })  -- <- key part
       end
