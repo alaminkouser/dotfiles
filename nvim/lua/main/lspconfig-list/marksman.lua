@@ -39,7 +39,6 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorHold" }, {
         contents = vim.split(table.concat(contents, "\n"), "\n", { trimempty = true })
         if vim.tbl_isempty(contents) then return end
 
-        vim.api.nvim_set_hl(0, "MyBlackFloat", { bg = "#000000" })
         vim.lsp.util.open_floating_preview(contents, "markdown", {
           border = {
             { "╭", "CmpBorder" },
@@ -51,10 +50,7 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorHold" }, {
             { "╰", "CmpBorder" },
             { "│", "CmpBorder" },
           },
-          winhl = "Normal:MyFloatNormal,FloatBorder:MyFloatBorder",
-          focus = false,
-          style = "normal",
-          winhighlight = "Normal:MyBlackFloat"
+          focus = false
         })
       end)
     end, 100)

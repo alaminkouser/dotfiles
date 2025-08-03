@@ -16,5 +16,5 @@
   "nvim-web-devicons": { "branch": "master", "commit": "3362099de3368aa620a8105b19ed04c2053e38c0" },
   "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
   "render-markdown.nvim": { "branch": "main", "commit": "eec00fbfd7273cdfa0a1154dbef0bb983641eaf8" },
-  "yazi.nvim": { "branch": "main", "commit": "005d565eaefe28b33fa4863645138b6a4530c3f2" }
+  "yazi.nvim": { "branch": "main", "commit": "2a32e37332c99bd2056cf0bda6b2496594fb27a3" }
 }
