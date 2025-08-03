@@ -24,6 +24,9 @@ require("lazy").setup({
   checker = {
     enabled = true
   },
+  rocks = {
+    enabled = false
+  },
   spec = {
     {
       "neovim/nvim-lspconfig",
