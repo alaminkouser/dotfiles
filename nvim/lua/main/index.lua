@@ -33,6 +33,10 @@ vim.opt.guicursor = {
   "i-c:ver25-blinkwait500-blinkon300-blinkoff300"
 }
 
+vim.cmd [[
+  highlight NormalFloat guibg=#000000
+]]
+
 vim.api.nvim_create_user_command("Ex", function()
   vim.cmd("Yazi")
 end, {})

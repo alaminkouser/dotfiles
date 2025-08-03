@@ -9,8 +9,8 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
   end,
 })
 
+
 local last_pos = nil
-local timer = nil
 
 vim.api.nvim_create_autocmd({ "CursorMoved", "CursorHold" }, {
   pattern = "*.md",
@@ -19,22 +19,44 @@ vim.api.nvim_create_autocmd({ "CursorMoved", "CursorHold" }, {
 
     local pos = vim.api.nvim_win_get_cursor(0)
     if last_pos and pos[1] == last_pos[1] and pos[2] == last_pos[2] then
-      return -- don't retrigger on same position
+      return
     end
     last_pos = pos
 
-    -- Debounce hover
-    if timer then
-      timer:stop()
-      timer:close()
-    end
-    timer = vim.loop.new_timer()
-    timer:start(150, 0, vim.schedule_wrap(function()
-      -- Ensure LSP client is attached
+    vim.defer_fn(function()
+      if not vim.api.nvim_buf_is_valid(0) then return end
+
       local clients = vim.lsp.get_clients({ bufnr = 0 })
-      if not vim.tbl_isempty(clients) then
-        vim.lsp.buf.hover(nil, { focus = false })  -- <- key part
-      end
-    end))
+      if vim.tbl_isempty(clients) then return end
+
+      local encoding = clients[1].offset_encoding or "utf-16"
+
+      local params = vim.lsp.util.make_position_params(nil, encoding)
+      vim.lsp.buf_request(0, "textDocument/hover", params, function(err, result, ctx, config)
+        if err or not result or not result.contents then return end
+
+        local contents = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+        contents = vim.split(table.concat(contents, "\n"), "\n", { trimempty = true })
+        if vim.tbl_isempty(contents) then return end
+
+        vim.api.nvim_set_hl(0, "MyBlackFloat", { bg = "#000000" })
+        vim.lsp.util.open_floating_preview(contents, "markdown", {
+          border = {
+            { "╭", "CmpBorder" },
+            { "─", "CmpBorder" },
+            { "╮", "CmpBorder" },
+            { "│", "CmpBorder" },
+            { "╯", "CmpBorder" },
+            { "─", "CmpBorder" },
+            { "╰", "CmpBorder" },
+            { "│", "CmpBorder" },
+          },
+          winhl = "Normal:MyFloatNormal,FloatBorder:MyFloatBorder",
+          focus = false,
+          style = "normal",
+          winhighlight = "Normal:MyBlackFloat"
+        })
+      end)
+    end, 100)
   end,
 })
