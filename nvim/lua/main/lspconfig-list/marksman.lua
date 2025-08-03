@@ -82,7 +82,7 @@ local function check_marksman_lsp_issues()
   if #results == 0 then
     -- only notify if previous check had some issues or it's the first run (last_result_was_empty == nil)
     if last_result_was_empty == false or last_result_was_empty == nil then
-      vim.notify("No Issues Found.", "info", { title = "Status" })
+      vim.notify("No Issues Found", "info", { title = "Status" })
     end
     last_result_was_empty = true
   else
