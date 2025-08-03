@@ -27,17 +27,32 @@ function selectFile() {
         rev | cut -d ":" -f1 | rev
 }
 
-function checkBrokenLinks() {
-    find $NOTES -name "*.md" | while IFS= read -r filePath; do
-        # Get all links in the current file
-        grep -o "\[\[[^]]*\]\]" "$filePath" | while IFS= read -r link; do
-            # Extract the link text (remove [[ and ]] and any pipe part)
-            linkText=$(echo "$link" | sed -E "s/\[\[([^|]*)(\|[^]]*)?\]\]/\1/")
-            # Check if the linked file exists
-            if [ ! -f "$NOTES/$linkText.md" ]; then
-                printf "Broken link [["%s"]] in file: %s\n" "$linkText" "$(echo "$filePath" | sed "s|^$NOTES/||")"
+function checkFiles() {
+    DATE_LIST=""
+    while IFS= read -r filePath; do
+        file_content="$(cat "$filePath")"
+        # If file contains "#calendar" then extract the date from the first line. First Line is "# YYYYMMDD"
+        if echo "$file_content" | grep -q "#calendar"; then
+            file_date=$(echo "$file_content" | head -n 1 | sed -n "s/^# \([0-9]\{8\}\).*/\1/p")
+            if [ -n "$file_date" ]; then
+                DATE_LIST="$file_date\n$DATE_LIST"
+            fi
+        fi
+
+        # Check for broken links in the file
+        links="$(echo "$file_content" | grep -o "\[\[[^]]\+\]\]" | sed -E "s/\[\[([^#|]+)([#|][^]]*)?\]\]/\1/")"
+        for link in $links; do
+            if [ ! -f "$NOTES/$link.md" ]; then
+                printf "Broken link [["%s"]] in file: %s\n" "$link" "$(echo "$filePath" | sed "s|^$NOTES/||")"
             fi
         done
+
+    done < <(find "$NOTES" -name "*.md")
+    # Print duplicate dates in DATE_LIST (i.e., dates that appear in multiple calendar items)
+    echo -e "$DATE_LIST" | sort | uniq -d | while read -r dup_date; do
+        if [ -n "$dup_date" ]; then
+            echo "Duplicate calendar date found: $dup_date"
+        fi
     done
 }
 
@@ -55,7 +70,7 @@ function endRun() {
     if [ $? -ne 0 ]; then
         echo "$fmt"
     fi
-    checkBrokenLinks
+    checkFiles
     syncNotes "$1"
 }
 
