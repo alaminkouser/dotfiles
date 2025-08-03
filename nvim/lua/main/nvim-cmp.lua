@@ -2,6 +2,26 @@ local cmp = require("cmp")
 
 cmp.setup({
 	enabled = true,
+  window = {
+    completion = cmp.config.window.bordered({
+      border = {
+        { "╭", "CmpBorder" },
+        { "─", "CmpBorder" },
+        { "╮", "CmpBorder" },
+        { "│", "CmpBorder" },
+        { "╯", "CmpBorder" },
+        { "─", "CmpBorder" },
+        { "╰", "CmpBorder" },
+        { "│", "CmpBorder" },
+      },
+      winhighlight = "Normal:CmpPmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None",
+      scrollbar = false,
+    }),
+    documentation = cmp.config.window.bordered({
+      border = "rounded",
+      winhighlight = "Normal:CmpDoc,FloatBorder:CmpDocBorder",
+    }),
+  },
 	sources = {
 		{
 			name = "nvim_lsp"
