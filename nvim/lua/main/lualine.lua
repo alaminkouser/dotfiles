@@ -1,40 +1,34 @@
-require("lualine").setup({
+require("lualine").setup {
   options = {
-	theme = custom_catppuccin,
-	component_separators = "",
-	section_separators = { left = "", right = "" },
-	disabled_filetypes = { "alpha", "Outline" },
+    theme = catppuccin,
+    component_separators = "",
+    section_separators = { left = "", right = "" },
   },
   sections = {
-	lualine_a = {
-	  { "mode", separator = { left = " ", right = "" }, icon = "" },
-	},
-	lualine_b = {
-	  { "filetype", icon_only = true, padding = { left = 1, right = 0 } },
-	  "filename",
-	},
-	lualine_c = {
-	  {
-		"branch",
-		icon = "",
-	  },
-	  {
-		"diff",
-		symbols = { added = " ", modified = " ", removed = " " },
-		colored = false,
-	  },
-	},
-	lualine_x = {
+    lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
+    lualine_b = {
+      "filename",
+      "branch",
+      {
+        "diff",
+        symbols = { added = " ", modified = " ", removed = " " },
+        colored = false,
+	    }
+    },
+    lualine_c = {
+      "%=", --[[ add your center components here in place of this comment ]]
+    },
+    lualine_x = {
 	  {
 		"diagnostics",
 		symbols = { error = " ", warn = " ", info = " ", hint = " " },
 		update_in_insert = true,
 	  },
 	},
-	lualine_y = { clients_lsp },
-	lualine_z = {
-		{ "location", separator = { left = "", right = " " }, icon = "" },
-	},
+    lualine_y = { "filetype", "progress" },
+    lualine_z = {
+      { "location", separator = { right = "" }, left_padding = 2 },
+    },
   },
   inactive_sections = {
     lualine_a = { "filename" },
@@ -44,5 +38,6 @@ require("lualine").setup({
     lualine_y = {},
     lualine_z = { "location" },
   },
-  extensions = { "toggleterm", "trouble" },
-})
+  tabline = {},
+  extensions = {},
+}
