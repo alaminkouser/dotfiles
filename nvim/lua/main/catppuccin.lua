@@ -66,8 +66,6 @@ vim.cmd([[
   hi VertSplit guibg=NONE ctermbg=NONE
   hi Pmenu guibg=NONE ctermbg=NONE
   hi CmpBorder guibg=NONE ctermbg=NONE
-  hi! link LazyBorder FloatBorder
-  hi! link LazyNormal NormalFloat
   hi FloatBorder guibg=NONE ctermbg=NONE
   hi NormalFloat guibg=NONE ctermbg=NONE
 ]])

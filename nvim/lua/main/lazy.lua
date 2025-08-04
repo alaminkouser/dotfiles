@@ -21,6 +21,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  ui = {
+    border = "rounded",
+    winblend = 20,
+  },
   checker = {
     enabled = true
   },
