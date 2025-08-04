@@ -34,6 +34,16 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
-require("main.lspconfig-list.denols")
-require("main.lspconfig-list.marksman")
-require("main.lspconfig-list.nushell")
+local lsp_dir = vim.fn.stdpath("config") .. "/lua/main/lspconfig-list"
+
+for name, _ in vim.fs.dir(lsp_dir) do
+  if name:match("%.lua$") then
+    local module_name = name:gsub("%.lua$", "")
+    require("main.lspconfig-list." .. module_name)
+  end
+end
+
+
+-- require("main.lspconfig-list.denols")
+-- require("main.lspconfig-list.marksman")
+-- require("main.lspconfig-list.nushell")
