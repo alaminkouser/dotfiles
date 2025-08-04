@@ -14,6 +14,7 @@ PATH="$HOME/.local/bin/yazi:$PATH"
 PATH="$HOME/.local/bin/miniconda/bin:$PATH"
 PATH="$HOME/.local/bin/node/bin:$PATH"
 PATH="$HOME/.local/bin/helix:$PATH"
+PATH="$HOME/.local/bin/lua-language-server/bin:$PATH"
 
 # Deno
 export DENO_INSTALL="$HOME/.local/bin/deno"
