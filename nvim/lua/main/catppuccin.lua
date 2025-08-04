@@ -1,16 +1,16 @@
 require("catppuccin").setup({
-  flavour = "auto", -- latte, frappe, macchiato, mocha
+  flavour = "mocha", -- latte, frappe, macchiato, mocha
   background = { -- :h background
     light = "latte",
     dark = "mocha",
   },
   transparent_background = true, -- disables setting the background color.
   show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-  term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+  term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
   dim_inactive = {
-    enabled = false, -- dims the background color of inactive window
+    enabled = true, -- dims the background color of inactive window
     shade = "dark",
-    percentage = 0.15, -- percentage of the shade to apply to the inactive window
+    percentage = 0, -- percentage of the shade to apply to the inactive window
   },
   no_italic = false, -- Force no italic
   no_bold = false, -- Force no bold
@@ -30,15 +30,25 @@ require("catppuccin").setup({
     operators = {},
     -- miscs = {}, -- Uncomment to turn off hard-coded styles
   },
-  color_overrides = {},
+  color_overrides = {
+    mocha = {
+      base = "#000000",
+      mantle = "#000000",
+      crust = "#000000",
+		},
+	},
   custom_highlights = {},
   default_integrations = true,
   integrations = {
     cmp = true,
     gitsigns = true,
     nvimtree = true,
+    native_lsp = {
+      enabled = true,
+    },
     treesitter = true,
-    notify = false,
+    notify = true,
+    noice = true,
     mini = {
       enabled = true,
       indentscope_color = "",
@@ -48,3 +58,16 @@ require("catppuccin").setup({
 
 -- setup must be called before loading
 vim.cmd.colorscheme "catppuccin"
+
+vim.cmd([[
+  hi Normal guibg=NONE ctermbg=NONE
+  hi NormalNC guibg=NONE ctermbg=NONE
+  hi EndOfBuffer guibg=NONE ctermbg=NONE
+  hi VertSplit guibg=NONE ctermbg=NONE
+  hi Pmenu guibg=NONE ctermbg=NONE
+  hi CmpBorder guibg=NONE ctermbg=NONE
+  hi! link LazyBorder FloatBorder
+  hi! link LazyNormal NormalFloat
+  hi FloatBorder guibg=NONE ctermbg=NONE
+  hi NormalFloat guibg=NONE ctermbg=NONE
+]])
