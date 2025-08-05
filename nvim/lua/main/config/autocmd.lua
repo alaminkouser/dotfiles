@@ -12,21 +12,16 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end
 })
 
-vim.api.nvim_create_autocmd("BufEnter", {
-  callback = function()
-    vim.defer_fn(function()
-      if vim.v.vim_did_enter == 0 then return end
-
-      local buf = vim.api.nvim_get_current_buf()
-      if not vim.api.nvim_buf_is_loaded(buf) then return end
-
-      local name = vim.api.nvim_buf_get_name(buf)
-      local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
-
-      if name == "" and #lines == 1 and lines[1] == "" then
-        vim.cmd("q")
-      end
-    end, 100)
+vim.api.nvim_create_autocmd("BufLeave", {
+  callback = function(args)
+    local buf = args.buf
+    local name = vim.api.nvim_buf_get_name(buf)
+    if vim.bo[buf].modifiable and vim.bo[buf].modified and name ~= "" then
+      vim.api.nvim_buf_call(buf, function()
+        -- notify("File Saved")
+	vim.cmd("w")
+      end)
+    end
   end
 })
 

@@ -6,9 +6,6 @@ local function should_save_current_buffer()
 end
 
 vim.keymap.set("n", "<Esc>", function()
-  if should_save_current_buffer() then
-    vim.cmd("w")
-  end
   vim.cmd("Yazi")
 end, {
   desc = "Save File (if applicable) and Open Yazi with Esc in Normal Mode"
