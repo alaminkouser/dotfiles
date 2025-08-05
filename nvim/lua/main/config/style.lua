@@ -12,6 +12,3 @@ require("catppuccin").setup({
 })
 
 vim.cmd.colorscheme("catppuccin")
-
--- FOR YAZI --
-vim.cmd("hi FloatBorder guibg=NONE ctermbg=NONE")
