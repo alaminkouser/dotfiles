@@ -1,17 +1,10 @@
-require("main.lazy")
+require("main.pack")
 
-require("main.lspconfig")
-require("main.nvim-cmp")
-require("main.nvim-treesitter")
+local config_dir = vim.fn.stdpath("config") .. "/lua/main/config"
 
-require("main.catppuccin")
-require("main.lualine")
-
-require("main.noice")
-require("main.notify")
-
-require("main.render-markdown")
-require("main.autolist")
-
-require("main.index")
-
+for name, _ in vim.fs.dir(config_dir) do
+  if name:match("%.lua$") then
+    local module_name = name:gsub("%.lua$", "")
+    require("main.config." .. module_name)
+  end
+end
