@@ -9,20 +9,20 @@ require("lualine").setup {
         "mode",
 	fmt = function(mode)
           local mode_map = {
-            ["NORMAL"]    = "N",
+            ["NORMAL"]    = "NOR",
             ["OP"]        = "OP",
-            ["INSERT"]    = "I",
-            ["VISUAL"]    = "VI",
+            ["INSERT"]    = "INS",
+            ["VISUAL"]    = "VIS",
             ["V-LINE"]    = "VL",
             ["V-BLOCK"]   = "VB",
-            ["SELECT"]    = "SE",
+            ["SELECT"]    = "SEL",
             ["S-LINE"]    = "SL",
             ["S-BLOCK"]   = "SB",
             ["COMMAND"]   = "CMD",
             ["EX"]        = "E",
-            ["REPLACE"]   = "R",
+            ["REPLACE"]   = "REP",
             ["V-REPLACE"] = "VR",
-            ["TERMINAL"]  = "T"
+            ["TERMINAL"]  = "TER"
           }
           return mode_map[mode] or mode
         end,
