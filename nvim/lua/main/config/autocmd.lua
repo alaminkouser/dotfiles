@@ -18,7 +18,6 @@ vim.api.nvim_create_autocmd("BufLeave", {
     local name = vim.api.nvim_buf_get_name(buf)
     if vim.bo[buf].modifiable and vim.bo[buf].modified and name ~= "" then
       vim.api.nvim_buf_call(buf, function()
-        -- notify("File Saved")
 	vim.cmd("w")
       end)
     end
