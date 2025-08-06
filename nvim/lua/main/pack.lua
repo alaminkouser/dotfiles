@@ -6,7 +6,6 @@ vim.pack.add({
   },
   {
     src = "https://github.com/nvim-treesitter/nvim-treesitter",
-    version = "main",
   },
   { src = "https://github.com/lewis6991/gitsigns.nvim" },
   { src = "https://github.com/catppuccin/nvim" },
