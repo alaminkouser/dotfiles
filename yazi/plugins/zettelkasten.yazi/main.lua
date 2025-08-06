@@ -21,11 +21,10 @@ return {
 
       -- Use 'bat' if available, fallback to 'cat'
       local previewer = vim.fn.executable("bat") == 1 and "bat" or "cat"
-      local cmd = previewer == "bat"
-        and { "bat", "--paging=never", "--style=plain", "--color=always", file_path }
+      local cmd = previewer == "bat" and { "bat", "--paging=never", "--style=plain", "--color=always", file_path }
         or { "cat", file_path }
 
       return ctx:subproc(cmd)
     end,
-  }
+  },
 }
