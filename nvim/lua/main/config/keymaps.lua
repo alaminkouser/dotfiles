@@ -17,5 +17,5 @@ vim.keymap.set("n", "q", function()
   end
   vim.cmd("q")
 end, {
-  desc = "Save and Quit Neovim with q",
+  desc = "Save and Quit Neovim",
 })
