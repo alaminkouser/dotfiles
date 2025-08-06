@@ -6,14 +6,20 @@ require("blink.cmp").setup({
       window = {
         border = "rounded",
 	scrollbar = false,
-        winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None"
+        winhighlight = "Normal:Normal,FloatBorder:None,CursorLine:BlinkCmpDocCursorLine,Search:None"
       }
     },
     menu = {
       border = "rounded",
       draw = { gap = 2 },
-      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None"
+      winhighlight = "Normal:Normal,FloatBorder:None,CursorLine:BlinkCmpMenuSelection,Search:None"
     }
+  },
+  keymap = {
+    preset = "none",
+    ["<Up>"] = { "select_prev", "fallback" },
+    ["<Down>"] = { "select_next", "fallback" },
+    ["<Tab>"] = { "select_next", "fallback" }
   },
   cmdline = {
     keymap = { preset = "inherit" },
