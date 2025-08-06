@@ -25,7 +25,11 @@ require("blink.cmp").setup({
     ["<CR>"] = { "accept", "fallback" },
   },
   cmdline = {
-    keymap = { preset = "inherit" },
+    keymap = {
+      preset = "inherit",
+      ["<Tab>"] = { "accept", "fallback" },
+      ["<CR>"] = { "accept_and_enter", "fallback" },
+    },
     completion = { menu = { auto_show = true } },
   },
   fuzzy = { implementation = "prefer_rust_with_warning" },
