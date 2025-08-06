@@ -10,6 +10,7 @@ vim.pack.add({
   },
   { src = "https://github.com/lewis6991/gitsigns.nvim" },
   { src = "https://github.com/catppuccin/nvim" },
+  { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 
   -- LUALINE --
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },

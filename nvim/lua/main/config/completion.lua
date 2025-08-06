@@ -22,6 +22,7 @@ require("blink.cmp").setup({
   },
   keymap = {
     ["<Tab>"] = { "select_next", "fallback" },
+    ["<CR>"] = { "accept", "fallback" },
   },
   cmdline = {
     keymap = { preset = "inherit" },
