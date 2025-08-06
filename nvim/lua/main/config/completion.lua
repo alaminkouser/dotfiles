@@ -1,5 +1,10 @@
 require("blink.cmp").setup({
   completion = {
+    list = {
+      selection = {
+        preselect = false,
+      },
+    },
     documentation = {
       auto_show = true,
       auto_show_delay_ms = 200,
@@ -16,7 +21,6 @@ require("blink.cmp").setup({
     },
   },
   keymap = {
-    preset = "none",
     ["<Up>"] = { "select_prev", "fallback" },
     ["<Down>"] = { "select_next", "fallback" },
     ["<Tab>"] = { "select_next", "fallback" },
