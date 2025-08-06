@@ -4,6 +4,7 @@ require("render-markdown").setup({
     enabled = false,
   },
   completions = {
+    lsp = { enabled = true },
     blink = { enabled = true },
   },
   heading = {
