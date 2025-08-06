@@ -8,11 +8,7 @@ end
 vim.keymap.set("n", "<Esc>", function()
   vim.cmd("Yazi")
 end, {
-  desc = "Save File (if applicable) and Open Yazi with Esc in Normal Mode"
-})
-
-vim.keymap.set("n", "q", "<cmd>q<CR>", {
-  desc = "Quit Neovim with q in Normal Mode"
+  desc = "Save File (if applicable) and Open Yazi with Esc in Normal Mode",
 })
 
 vim.keymap.set("n", "q", function()
@@ -21,5 +17,5 @@ vim.keymap.set("n", "q", function()
   end
   vim.cmd("q")
 end, {
-  desc = "Save and Quit Neovim with q"
+  desc = "Save and Quit Neovim with q",
 })

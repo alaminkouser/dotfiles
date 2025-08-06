@@ -1,7 +1,7 @@
-require("lualine").setup {
+require("lualine").setup({
   options = {
     component_separators = "|",
-    section_separators = { left = "", right = "" }
+    section_separators = { left = "", right = "" },
   },
   sections = {
     lualine_a = {
@@ -9,25 +9,25 @@ require("lualine").setup {
         "mode",
         fmt = function(mode)
           local mode_map = {
-            ["NORMAL"]    = "NOR",
-            ["OP"]        = "OP",
-            ["INSERT"]    = "INS",
-            ["VISUAL"]    = "VIS",
-            ["V-LINE"]    = "VL",
-            ["V-BLOCK"]   = "VB",
-            ["SELECT"]    = "SEL",
-            ["S-LINE"]    = "SL",
-            ["S-BLOCK"]   = "SB",
-            ["COMMAND"]   = "CMD",
-            ["EX"]        = "E",
-            ["REPLACE"]   = "REP",
+            ["NORMAL"] = "NOR",
+            ["OP"] = "OP",
+            ["INSERT"] = "INS",
+            ["VISUAL"] = "VIS",
+            ["V-LINE"] = "VL",
+            ["V-BLOCK"] = "VB",
+            ["SELECT"] = "SEL",
+            ["S-LINE"] = "SL",
+            ["S-BLOCK"] = "SB",
+            ["COMMAND"] = "CMD",
+            ["EX"] = "E",
+            ["REPLACE"] = "REP",
             ["V-REPLACE"] = "VR",
-            ["TERMINAL"]  = "TER"
+            ["TERMINAL"] = "TER",
           }
           return mode_map[mode] or mode
         end,
-        separator = { left = "", right = "" }
-      }
+        separator = { left = "", right = "" },
+      },
     },
     lualine_b = {
       "filename",
@@ -35,18 +35,18 @@ require("lualine").setup {
       {
         "diff",
         symbols = { added = " ", modified = " ", removed = " " },
-        colored = true
-      }
+        colored = true,
+      },
     },
     lualine_c = {
-      ""
+      "",
     },
     lualine_x = {
       {
         "diagnostics",
         symbols = { error = " ", warn = " ", info = " ", hint = " " },
-        update_in_insert = true
-      }
+        update_in_insert = true,
+      },
     },
     lualine_y = { "filetype" },
     lualine_z = {
@@ -58,8 +58,8 @@ require("lualine").setup {
             tostring(require("lualine.components.location")()):gsub("^%s*(.-)%s*$", "%1")
           )
         end,
-        separator = { left = "", right = "" }
-      }
-    }
-  }
-}
+        separator = { left = "", right = "" },
+      },
+    },
+  },
+})

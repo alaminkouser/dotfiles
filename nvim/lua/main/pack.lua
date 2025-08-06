@@ -2,11 +2,11 @@ vim.pack.add({
   { src = "https://github.com/neovim/nvim-lspconfig" },
   {
     src = "https://github.com/saghen/blink.cmp",
-    version = vim.version.range("*")
+    version = vim.version.range("*"),
   },
   {
     src = "https://github.com/nvim-treesitter/nvim-treesitter",
-    version = "main"
+    version = "main",
   },
   { src = "https://github.com/catppuccin/nvim" },
 
@@ -23,7 +23,6 @@ vim.pack.add({
   { src = "https://github.com/rcarriga/nvim-notify" },
   { src = "https://github.com/folke/noice.nvim" },
 
-
   -- LSP --
-  { src = "https://github.com/luals/lua-language-server" }
+  { src = "https://github.com/luals/lua-language-server" },
 })

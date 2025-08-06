@@ -3,12 +3,12 @@ require("catppuccin").setup({
   transparent_background = true,
   integrations = {
     blink_cmp = {
-      style = "rounded"
+      style = "rounded",
     },
     treesitter = true,
     noice = true,
-    notify = true
-  }
+    notify = true,
+  },
 })
 
 vim.cmd.colorscheme("catppuccin")
