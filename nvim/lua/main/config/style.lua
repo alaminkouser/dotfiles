@@ -8,6 +8,7 @@ require("catppuccin").setup({
     treesitter = true,
     noice = true,
     notify = true,
+    gitsigns = true,
   },
 })
 
