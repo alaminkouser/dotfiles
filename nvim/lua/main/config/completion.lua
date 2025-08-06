@@ -5,7 +5,7 @@ require("blink.cmp").setup({
       auto_show_delay_ms = 200,
       window = {
         border = "rounded",
-	scrollbar = false,
+        scrollbar = false,
         winhighlight = "Normal:Normal,FloatBorder:None,CursorLine:BlinkCmpDocCursorLine,Search:None"
       }
     },
