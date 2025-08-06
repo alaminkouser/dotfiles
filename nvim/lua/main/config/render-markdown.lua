@@ -9,7 +9,6 @@ require("render-markdown").setup({
   heading = {
     icons = { "# ", "## ", "### ", "#### ", "##### ", "###### " },
     width = "block",
-    style = "full",
   },
   dash = {
     width = 80,
