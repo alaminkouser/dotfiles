@@ -27,6 +27,10 @@ vim.api.nvim_create_autocmd("BufLeave", {
 vim.api.nvim_create_autocmd("BufNewFile", {
   callback = function()
     local filename = vim.fn.expand("%:t")
-    notify("Filename: " .. filename, vim.log.levels.INFO, { title = "New File" })
+    notify(
+      "Filename: " .. filename,
+      vim.log.levels.INFO,
+      { title = "New File" }
+    )
   end,
 })

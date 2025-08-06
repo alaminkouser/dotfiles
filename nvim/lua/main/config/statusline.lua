@@ -44,7 +44,12 @@ require("lualine").setup({
     lualine_x = {
       {
         "diagnostics",
-        symbols = { error = " ", warn = " ", info = " ", hint = " " },
+        symbols = {
+          error = " ",
+          warn = " ",
+          info = " ",
+          hint = " ",
+        },
         update_in_insert = true,
       },
     },
@@ -55,7 +60,10 @@ require("lualine").setup({
           return string.format(
             "%s | %s",
             require("lualine.components.progress")(),
-            tostring(require("lualine.components.location")()):gsub("^%s*(.-)%s*$", "%1")
+            tostring(require("lualine.components.location")()):gsub(
+              "^%s*(.-)%s*$",
+              "%1"
+            )
           )
         end,
         separator = { left = "", right = "" },
