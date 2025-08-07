@@ -8,14 +8,14 @@ end
 vim.keymap.set("n", "<Esc>", function()
   vim.cmd("Yazi")
 end, {
-  desc = "Save File (if applicable) and Open Yazi with Esc in Normal Mode",
+  desc = "Open Yazi",
 })
 
 vim.keymap.set("n", "q", function()
   if should_save_current_buffer() then
-    vim.cmd("w")
+    vim.cmd("write ++p")
   end
-  vim.cmd("q")
+  vim.cmd("quit")
 end, {
   desc = "Save and Quit Neovim",
 })
