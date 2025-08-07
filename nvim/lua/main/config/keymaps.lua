@@ -26,10 +26,11 @@ vim.keymap.set("n", "r", function()
     local reg = vim.fn.reg_recording()
     if reg ~= "" then
       vim.notify(
-        "Macro Started Recording in Register [" .. reg .. "]",
+        "recording @" .. reg,
         vim.log.levels.INFO,
         {
           render = "simple",
+	  title = "Recording"
         }
       )
     end
