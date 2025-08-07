@@ -15,4 +15,7 @@ require("noice").setup({
       view = "notify",
     },
   },
+  presets = {
+    long_message_to_split = true,
+  },
 })
