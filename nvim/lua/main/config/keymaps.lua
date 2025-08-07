@@ -20,4 +20,18 @@ end, {
   desc = "Save and Quit Neovim",
 })
 
-vim.keymap.set("n", "r", "q")
+vim.keymap.set("n", "r", function()
+  vim.api.nvim_feedkeys("q", "n", false)
+  vim.defer_fn(function()
+    local reg = vim.fn.reg_recording()
+    if reg ~= "" then
+      vim.notify(
+        "Macro Started Recording in Register [" .. reg .. "]",
+        vim.log.levels.INFO,
+        {
+          render = "simple",
+        }
+      )
+    end
+  end, 100)
+end)
