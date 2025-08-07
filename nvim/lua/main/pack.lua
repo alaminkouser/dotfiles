@@ -11,6 +11,15 @@ vim.pack.add({
   { src = "https://github.com/catppuccin/nvim" },
   { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 
+  -- NEORG --
+  { src = "https://github.com/nvim-neorg/lua-utils.nvim" },
+  { src = "https://github.com/pysan3/pathlib.nvim" },
+  { src = "https://github.com/nvim-neotest/nvim-nio" },
+  {
+    src = "https://github.com/nvim-neorg/neorg",
+    version = vim.version.range("*"),
+  },
+
   -- LUALINE --
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },

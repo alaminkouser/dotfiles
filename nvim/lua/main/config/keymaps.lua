@@ -25,14 +25,10 @@ vim.keymap.set("n", "r", function()
   vim.defer_fn(function()
     local reg = vim.fn.reg_recording()
     if reg ~= "" then
-      vim.notify(
-        "recording @" .. reg,
-        vim.log.levels.INFO,
-        {
-          render = "simple",
-	  title = "Recording"
-        }
-      )
+      vim.notify("recording @" .. reg, vim.log.levels.INFO, {
+        render = "simple",
+        title = "Recording",
+      })
     end
   end, 100)
 end)
