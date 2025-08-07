@@ -1,3 +1,5 @@
+local palette = require("catppuccin.palettes").get_palette()
+
 require("lualine").setup({
   options = {
     component_separators = "|",
@@ -5,6 +7,17 @@ require("lualine").setup({
   },
   sections = {
     lualine_a = {
+      {
+        function()
+          local reg = vim.fn.reg_recording()
+          if reg == "" then
+            return ""
+          end
+          return " " .. reg
+        end,
+        color = { fg = palette.red, bg = palette.surface0 },
+        separator = { left = "" },
+      },
       {
         "mode",
         fmt = function(mode)
@@ -38,9 +51,7 @@ require("lualine").setup({
         colored = true,
       },
     },
-    lualine_c = {
-      "",
-    },
+    lualine_c = {},
     lualine_x = {
       {
         "diagnostics",
