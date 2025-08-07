@@ -19,3 +19,5 @@ vim.keymap.set("n", "q", function()
 end, {
   desc = "Save and Quit Neovim",
 })
+
+vim.keymap.set("n", "r", "q")
