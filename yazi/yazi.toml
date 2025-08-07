@@ -2,8 +2,3 @@
 ratio = [0, 1, 2]
 linemode = "none"
 show_hidden = true
-
-[plugin]
-prepend_previewers = [
-  { name = "*.md", run = "mdtitle" }
-]
