@@ -19,6 +19,7 @@ vim.pack.add({
     src = "https://github.com/nvim-neorg/neorg",
     version = vim.version.range("*"),
   },
+  { src = "https://github.com/benlubas/neorg-interim-ls" }, -- To-Do: Use blink.cmp
 
   -- LUALINE --
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },

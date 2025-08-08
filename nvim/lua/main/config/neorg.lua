@@ -3,6 +3,11 @@ require("neorg").setup({
     ["core.autocommands"] = {},
     ["core.defaults"] = {},
     ["core.concealer"] = {},
+    ["core.completion"] = {
+      config = {
+        engine = { module_name = "external.lsp-completion" },
+      },
+    },
     ["core.dirman"] = {
       config = {
         workspaces = {
@@ -19,6 +24,20 @@ require("neorg").setup({
       config = {
         author = "AL AMIN KOUSER",
         timezone = "utc",
+      },
+    },
+    ["core.dirman.utils"] = {},
+    ["external.interim-ls"] = {
+      config = {
+        completion_provider = {
+          enable = true,
+          documentation = true,
+          categories = true, -- To-Do: Not Working Now; Completion will be Changed
+          people = {
+            enable = true,
+            path = "people",
+          },
+        },
       },
     },
   },
