@@ -1,3 +1,5 @@
+vim.g.maplocalleader = ","
+
 require("main.pack")
 
 local config_dir = vim.fn.stdpath("config") .. "/lua/main/config"
