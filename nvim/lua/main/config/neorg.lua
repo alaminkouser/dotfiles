@@ -3,6 +3,9 @@ require("neorg").setup({
     ["core.autocommands"] = {},
     ["core.defaults"] = {},
     ["core.concealer"] = {},
+    ["core.ui.calendar"] = {},
+    ["core.tempus"] = {},
+    ["core.ui"] = {},
     ["core.completion"] = {
       config = {
         engine = { module_name = "external.lsp-completion" },
@@ -14,12 +17,12 @@ require("neorg").setup({
           neorg = "~/FILES/neorg",
         },
         default_workspace = "neorg",
-        index = "index.norg",
-        open_last_workspace = true,
+        open_last_workspace = false,
         use_popup = false,
       },
     },
     ["core.integrations.treesitter"] = {},
+    ["core.summary"] = {},
     ["core.esupports.metagen"] = {
       config = {
         author = "AL AMIN KOUSER",
