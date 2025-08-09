@@ -12,18 +12,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
-vim.api.nvim_create_autocmd("BufLeave", {
-  callback = function(args)
-    local buf = args.buf
-    local name = vim.api.nvim_buf_get_name(buf)
-    if vim.bo[buf].modifiable and vim.bo[buf].modified and name ~= "" then
-      vim.api.nvim_buf_call(buf, function()
-        vim.cmd("write ++p")
-      end)
-    end
-  end,
-})
-
 vim.api.nvim_create_autocmd("BufNewFile", {
   callback = function()
     local filename = vim.fn.expand("%:t")
@@ -34,3 +22,24 @@ vim.api.nvim_create_autocmd("BufNewFile", {
     )
   end,
 })
+
+vim.keymap.set("n", ":", function()
+  vim.cmd("update")
+  vim.api.nvim_feedkeys(":", "n", false)
+end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "n", function()
+  vim.cmd("update")
+  vim.api.nvim_feedkeys(
+    vim.api.nvim_replace_termcodes(
+      "<Plug>(neorg.dirman.new-note)",
+      true,
+      false,
+      true
+    ),
+    "m",
+    false
+  )
+end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "<Tab>", "za", { noremap = true, silent = true })

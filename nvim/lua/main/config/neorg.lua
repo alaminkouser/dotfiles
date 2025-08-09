@@ -1,3 +1,4 @@
+-- To-Do: Re write the file
 require("neorg").setup({
   load = {
     ["core.autocommands"] = {},
@@ -6,6 +7,11 @@ require("neorg").setup({
     ["core.ui.calendar"] = {},
     ["core.tempus"] = {},
     ["core.ui"] = {},
+    ["core.journal"] = {
+      config = {
+        toc_format = { "yy" },
+      },
+    },
     ["core.completion"] = {
       config = {
         engine = { module_name = "external.lsp-completion" },
@@ -17,16 +23,17 @@ require("neorg").setup({
           neorg = "~/FILES/neorg",
         },
         default_workspace = "neorg",
-        open_last_workspace = false,
+        open_last_workspace = true,
         use_popup = false,
       },
     },
-    ["core.integrations.treesitter"] = {},
     ["core.summary"] = {},
     ["core.esupports.metagen"] = {
       config = {
         author = "AL AMIN KOUSER",
         timezone = "utc",
+        type = "auto",
+        update_date = true,
       },
     },
     ["core.dirman.utils"] = {},
