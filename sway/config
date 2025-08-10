@@ -1,3 +1,5 @@
+xwayland disable
+
 set $mod Mod4
 
 include /etc/sway/config-vars.d/*
