@@ -13,7 +13,8 @@ PATH="$HOME/.local/bin/nvim/bin:$PATH"
 PATH="$HOME/.local/bin/yazi:$PATH"
 PATH="$HOME/.local/bin/miniconda/bin:$PATH"
 PATH="$HOME/.local/bin/node/bin:$PATH"
-PATH="$HOME/.local/bin/helix:$PATH"
+PATH="$HOME/.local/bin/zig:$PATH"
+PATH="$HOME/.local/bin/lua:$PATH"
 PATH="$HOME/.local/bin/lua-language-server/bin:$PATH"
 
 # Deno
