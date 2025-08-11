@@ -1,3 +1,5 @@
+source ./theme.nu
+
 $env.config.show_banner = false
 
 $env.PROMPT_COMMAND = {
@@ -7,7 +9,7 @@ $env.PROMPT_COMMAND = {
 $env.PROMPT_INDICATOR = {$"(ansi white_dimmed)$ (ansi reset)"}
 
 $env.PROMPT_COMMAND_RIGHT = {
-   $"(ansi white_dimmed)" + "MEM: " + (((sys mem | get used | into int) / (sys mem | get total | into int)) * 100 | into string --decimals 2) + "%" + $"(ansi reset)"
+   $"(ansi white_dimmed)" + " : " + (((sys mem | get used | into int) / (sys mem | get total | into int)) * 100 | into string --decimals 2) + "%" + " 󰁹: " + (cat /sys/class/power_supply/BAT0/capacity) + "%" + $"(ansi reset)"
 }
 
 alias ls = ls -a

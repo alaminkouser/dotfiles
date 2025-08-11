@@ -1,7 +1,9 @@
 background = #000000
+background-opacity = 0.5
 
 window-padding-balance = true
 window-padding-color = extend
 mouse-hide-while-typing = true
 
-# custom-shader = ./shaders/water.glsl
+cursor-style = bar
+cursor-style-blink = true
