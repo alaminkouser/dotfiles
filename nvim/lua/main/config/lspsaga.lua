@@ -13,6 +13,6 @@ require("lspsaga").setup({
     right_width = "0.5",
   },
   ui = {
-    code_action = " ",
+    code_action = "",
   },
 })
