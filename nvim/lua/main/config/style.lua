@@ -9,11 +9,14 @@ require("catppuccin").setup({
     noice = true,
     notify = true,
     gitsigns = true,
+    telescope = {
+      enabled = true,
+      border = false,
+    },
   },
 })
 
 vim.cmd.colorscheme("catppuccin")
 
-local palette = require("catppuccin.palettes").get_palette()
-
-vim.cmd("highlight Pmenu guibg=" .. palette.mantle)
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })

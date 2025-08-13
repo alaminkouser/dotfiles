@@ -24,5 +24,8 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # Nushell
 PATH="$HOME/.local/bin/nushell:$PATH"
 
+# Pandoc
+PATH="$HOME/.local/bin/pandoc:$PATH"
+
 # Dotnet
-export PATH="$HOME/.dotnet:$PATH" && export DOTNET_ROOT="$HOME/.dotnet"
+export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true

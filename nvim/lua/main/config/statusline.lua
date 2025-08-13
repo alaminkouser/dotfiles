@@ -51,7 +51,12 @@ require("lualine").setup({
         colored = true,
       },
     },
-    lualine_c = {},
+    lualine_c = {
+      function()
+        local ok, w = pcall(require, "lspsaga.symbol.winbar")
+        return ok and w.get_bar() or ""
+      end,
+    },
     lualine_x = {
       {
         "diagnostics",
