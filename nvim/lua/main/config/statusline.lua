@@ -52,10 +52,7 @@ require("lualine").setup({
       },
     },
     lualine_c = {
-      function()
-        local ok, w = pcall(require, "lspsaga.symbol.winbar")
-        return ok and w.get_bar() or ""
-      end,
+      "lsp_status",
     },
     lualine_x = {
       {

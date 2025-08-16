@@ -3,7 +3,7 @@ source ./theme.nu
 $env.config.show_banner = false
 
 $env.PROMPT_COMMAND = {
-  $"(ansi blue_dimmed)" + $env.USER + "@" + (sys host | get hostname) + $"(ansi reset)" + $"(ansi white_dimmed):(ansi reset)" + $"(ansi green_dimmed)($env.PWD | str replace -r $"^/home/($env.USER)" "~")(ansi reset)" + "\n" + $"(ansi white_dimmed)[(ansi reset)(ansi red_dimmed)(job list | length)(ansi reset)(ansi white_dimmed)](ansi reset)(ansi red_dimmed)($env.LAST_EXIT_CODE)(ansi reset)"
+  $"(ansi blue_dimmed)" + $env.USER + "@" + (sys host | get hostname) + $"(ansi reset)" + $"(ansi white_dimmed):(ansi reset)" + $"(ansi green_dimmed)($env.PWD | str replace -r $"^/home/($env.USER)" "~")(ansi reset)" + "\n" + $"(ansi white_dimmed)[(ansi reset)(ansi red_dimmed)(job list | length)(ansi reset)(ansi white_dimmed)](ansi reset)(ansi red_dimmed)($env.LAST_EXIT_CODE)(ansi reset)\e[5 q"
 }
 
 $env.PROMPT_INDICATOR = {$"(ansi white_dimmed)$ (ansi reset)"}

@@ -8,7 +8,6 @@ vim.pack.add({
     src = "https://github.com/nvim-treesitter/nvim-treesitter",
   },
   { src = "https://github.com/nvim-telescope/telescope.nvim" },
-  { src = "https://github.com/nvimdev/lspsaga.nvim" },
   { src = "https://github.com/lewis6991/gitsigns.nvim" },
   { src = "https://github.com/catppuccin/nvim" },
   { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
