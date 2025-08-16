@@ -52,7 +52,13 @@ require("lualine").setup({
       },
     },
     lualine_c = {
-      "lsp_status",
+      {
+        "lsp_status",
+        symbols = {
+          done = "",
+          separator = " | ",
+        },
+      },
     },
     lualine_x = {
       {

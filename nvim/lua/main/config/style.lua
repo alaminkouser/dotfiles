@@ -11,8 +11,8 @@ require("catppuccin").setup({
     gitsigns = true,
     telescope = {
       enabled = true,
-      border = false,
     },
+    render_markdown = true,
   },
 })
 
