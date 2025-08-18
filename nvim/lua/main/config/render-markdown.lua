@@ -16,4 +16,7 @@ require("render-markdown").setup({
   html = {
     enabled = false,
   },
+  code = {
+    width = "block",
+  },
 })
