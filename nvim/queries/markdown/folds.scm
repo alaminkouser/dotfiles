@@ -1,5 +1,12 @@
-((section
-  (atx_heading)) @fold)
+([
+  (fenced_code_block)
+  (indented_code_block)
+  (list_item
+    (list))
+  (section)
+] @fold
+  (#trim! @fold))
 
-((list) @fold)
-((fenced_code_block) @fold)
+(section
+  (list) @fold
+  (#trim! @fold))
