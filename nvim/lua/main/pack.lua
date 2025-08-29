@@ -31,4 +31,7 @@ vim.pack.add({
 
   -- LSP --
   { src = "https://github.com/luals/lua-language-server" },
+
+  -- Typst Preview ---
+  { src = "https://github.com/chomosuke/typst-preview.nvim" },
 })

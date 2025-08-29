@@ -15,19 +15,19 @@ bindsym $mod+space floating toggle
 # mouse button for dragging.
 floating_modifier $mod normal
 
-bar {
-    position top
+# bar {
+#     position top
 
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-    status_edge_padding 0
-    status_padding 0
-    colors {
-	statusline #808080
-	background #000000
-	focused_workspace #808080ff #000000 #808080
-        inactive_workspace #00000000 #00000000 #808080
-    }
-}
+#     status_command while date +"%Y-%m-%d %X"; do sleep 1; done
+#     status_edge_padding 0
+#     status_padding 0
+#     colors {
+# 	statusline #808080
+# 	background #000000
+# 	focused_workspace #808080ff #000000 #808080
+#       inactive_workspace #00000000 #00000000 #808080
+#     }
+# }
 
 
 input type:touchpad {
