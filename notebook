@@ -53,7 +53,7 @@ fi
           {
             \"parts\": [
               {
-                \"text\": \"Generate a concise commit message based on these git changes. This is a notebook. Please keep the commit message concise and to the point. Do not include any other text than the commit message:\\n\\n$GIT_DIFF\"
+                \"text\": \"You are an assistant that writes git commit messages.\nI will provide the output of `git diff`.\nYour task: summarize the changes into a short, clear commit message.\n\nGuidelines:\n\n* Keep it under 72 characters.\n* A phrase or keywords are enough (no need for full sentences).\n* Focus on *what changed* and *why*.\n\nHere is the git diff:\\n\\n$GIT_DIFF\"
               }
             ]
           }
