@@ -1,4 +1,74 @@
 #!/usr/bin/env sh
 
-echo "hello"
+if [ "$NOTEBOOK_PATH" = "" ]; then
+    echo "NOTEBOOK_PATH is not set"
+    exit 1
+fi
 
+if [ "$GEMINI_API_KEY" = "" ]; then
+    echo "GEMINI_API_KEY is not set"
+    exit 1
+fi
+
+if ! command -v prettier >/dev/null 2>&1; then
+    echo "Prettier is not installed"
+    exit 1
+fi
+
+if ! command -v git >/dev/null 2>&1; then
+    echo "Git is not installed"
+    exit 1
+fi
+
+if ! command -v curl >/dev/null 2>&1; then
+    echo "Curl is not installed"
+    exit 1
+fi
+
+if ! command -v jq >/dev/null 2>&1; then
+    echo "JQ is not installed"
+    exit 1
+fi
+
+$EDITOR $NOTEBOOK_PATH/README.md
+
+prettier --write $NOTEBOOK_PATH > /dev/null 2>&1
+
+git -C $NOTEBOOK_PATH add --all
+
+GIT_DIFF=$(git -C $NOTEBOOK_PATH diff --cached)
+
+if [ "$GIT_DIFF" = "" ]; then
+    exit 0
+fi
+
+# Run everything from Gemini API call to end in background (silently)
+{
+    gemini_response=$(curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent" \
+      -H 'Content-Type: application/json' \
+      -H "X-goog-api-key: $GEMINI_API_KEY" \
+      -X POST \
+      -d "{
+        \"contents\": [
+          {
+            \"parts\": [
+              {
+                \"text\": \"Generate a concise commit message based on these git changes. This is a notebook. Please keep the commit message concise and to the point. Do not include any other text than the commit message:\\n\\n$GIT_DIFF\"
+              }
+            ]
+          }
+        ]
+      }")
+
+    gemini_response_without_newlines=$(echo "$gemini_response" | tr "\n" " ")
+
+    commit_message=$(echo "$gemini_response_without_newlines" | jq -r ".candidates[0].content.parts[0].text")
+
+    if [ "$commit_message" = "" ]; then
+        exit 1
+    fi
+
+    git -C $NOTEBOOK_PATH commit -m "$commit_message" > /dev/null 2>&1
+
+    git -C $NOTEBOOK_PATH push > /dev/null 2>&1
+} > /dev/null 2>&1 &
