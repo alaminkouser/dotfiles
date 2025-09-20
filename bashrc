@@ -27,5 +27,8 @@ PATH="$HOME/.local/bin/nushell:$PATH"
 # Pandoc
 PATH="$HOME/.local/bin/pandoc:$PATH"
 
+# google-cloud-sdk
+PATH="$HOME/.local/bin/google-cloud-sdk/bin:$PATH"
+
 # Dotnet
 export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
