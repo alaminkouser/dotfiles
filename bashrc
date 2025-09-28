@@ -4,6 +4,7 @@ PS2="$> "
 alias ls="ls -lah --group-directories-first --color"
 alias z="zellij attach --create main"
 alias aria2c="aria2c -x 16 --seed-time=0"
+alias rm="rm -rfv"
 
 export EDITOR="nvim"
 
