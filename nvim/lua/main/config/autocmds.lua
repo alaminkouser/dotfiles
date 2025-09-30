@@ -28,18 +28,4 @@ vim.keymap.set("n", ":", function()
   vim.api.nvim_feedkeys(":", "n", false)
 end, { noremap = true, silent = true })
 
-vim.keymap.set("n", "n", function()
-  vim.cmd("update")
-  vim.api.nvim_feedkeys(
-    vim.api.nvim_replace_termcodes(
-      "<Plug>(neorg.dirman.new-note)",
-      true,
-      false,
-      true
-    ),
-    "m",
-    false
-  )
-end, { noremap = true, silent = true })
-
 vim.keymap.set("n", "<Tab>", "za", { noremap = true, silent = true })

@@ -4,7 +4,7 @@ require("render-markdown").setup({
     enabled = false,
   },
   completions = {
-    lsp = { enabled = true },
+    lsp = { enabled = false },
   },
   heading = {
     icons = { "# ", "## ", "### ", "#### ", "##### ", "###### " },
