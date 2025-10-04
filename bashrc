@@ -50,4 +50,4 @@ export FZF_DEFAULT_OPTS=" \
 --select-1 \
 --preview \"test -d {} && \
   ls -lah --group-directories-first --color {} || \
-  bat --color=always --style=plain {}\""
+  fzf-preview.sh {}\""
