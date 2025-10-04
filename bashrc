@@ -35,7 +35,8 @@ PATH="$HOME/.local/bin/google-cloud-sdk/bin:$PATH"
 export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
 
 # fzf
-# eval "$(fzf --bash)"
+which fzf > /dev/null && eval "$(fzf --bash)"
+export FZF_COMPLETION_TRIGGER=""
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#000000,spinner:#F5E0DC,hl:#F38BA8 \
 --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
@@ -43,4 +44,7 @@ export FZF_DEFAULT_OPTS=" \
 --color=selected-bg:#45475A \
 --color=border:#6C7086,label:#CDD6F4 \
 --style full \
---preview \"bat --style=full --color=always {}\""
+--reverse \
+--bind \"change:first\" \
+--select-1 \
+--preview \"bat --color=always --style=plain {}\""
