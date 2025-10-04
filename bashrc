@@ -37,6 +37,7 @@ export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
 # fzf
 which fzf > /dev/null && eval "$(fzf --bash)"
 export FZF_COMPLETION_TRIGGER=""
+export FZF_COMPLETION_OPTS="+m"
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#000000,spinner:#F5E0DC,hl:#F38BA8 \
 --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
@@ -47,4 +48,6 @@ export FZF_DEFAULT_OPTS=" \
 --reverse \
 --bind \"change:first\" \
 --select-1 \
---preview \"bat --color=always --style=plain {}\""
+--preview \"test -d {} && \
+  ls -lah --group-directories-first --color {} || \
+  bat --color=always --style=plain {}\""
