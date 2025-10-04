@@ -2,8 +2,3 @@
 on = ["<Esc>"]
 run = "close"
 desc = "Close Yazi"
-
-[[mgr.prepend_keymap]]
-on   = [ "v" ]
-run  = "plugin zettelkasten-view"
-desc = "Show Zettelkasten"
