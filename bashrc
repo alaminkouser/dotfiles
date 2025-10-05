@@ -1,6 +1,7 @@
 PS1="\[\e[5 q\]\[\e]2;[\j]\$?:\w\a\]\[\033[38;2;64;64;128;1m\]\u@\h\[\033[0m\]:\[\033[38;2;64;128;64;1m\]\w\[\033[0m\]\n[\[\033[38;2;128;64;64;1m\]\j\[\033[0m\]]\[\033[38;2;128;64;64;1m\]\$?\[\033[0m\]\$ "
 PS2="$> "
 
+
 alias ls="ls -lah --group-directories-first --color"
 alias z="zellij attach --create main"
 alias aria2c="aria2c -x 16 --seed-time=0"
@@ -33,6 +34,8 @@ PATH="$HOME/.local/bin/google-cloud-sdk/bin:$PATH"
 
 # Dotnet
 export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
+
+which gpgconf > /dev/null && export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 # fzf
 which fzf > /dev/null && eval "$(fzf --bash)"
