@@ -8,4 +8,6 @@ mouse-hide-while-typing = true
 cursor-style = bar
 cursor-style-blink = true
 
-custom-shader = "./shaders/cursor.glsl"
+font-size = 23
+
+# custom-shader = "./shaders/cursor.glsl"

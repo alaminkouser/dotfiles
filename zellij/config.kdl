@@ -1,3 +1,4 @@
 show_startup_tips false
 theme "catppuccin-mocha"
 default_layout "main"
+pane_frames false
