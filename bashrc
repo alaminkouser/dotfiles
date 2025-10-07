@@ -35,7 +35,7 @@ PATH="$HOME/.local/bin/google-cloud-sdk/bin:$PATH"
 # Dotnet
 export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
 
-which gpgconf > /dev/null && export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+which gpgconf > /dev/null && export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)" && export GPG_TTY=$(tty)
 
 # fzf
 which fzf > /dev/null && eval "$(fzf --bash)"
