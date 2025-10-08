@@ -12,6 +12,9 @@ vim.pack.add({
   { src = "https://github.com/catppuccin/nvim" },
   { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 
+  -- Auto List
+  { src = "https://github.com/gaoDean/autolist.nvim" },
+
   -- FOLD CODE --
   { src = "https://github.com/kevinhwang91/promise-async" },
   { src = "https://github.com/kevinhwang91/nvim-ufo" },
