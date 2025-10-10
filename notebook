@@ -11,24 +11,30 @@ if [ "$GEMINI_API_KEY" = "" ]; then
 fi
 
 if ! command -v prettier >/dev/null 2>&1; then
-    echo "Prettier is not installed"
+    echo "prettier is not installed"
     exit 1
 fi
 
 if ! command -v git >/dev/null 2>&1; then
-    echo "Git is not installed"
+    echo "git is not installed"
     exit 1
 fi
 
 if ! command -v curl >/dev/null 2>&1; then
-    echo "Curl is not installed"
+    echo "curl is not installed"
     exit 1
 fi
 
 if ! command -v jq >/dev/null 2>&1; then
-    echo "JQ is not installed"
+    echo "jq is not installed"
     exit 1
 fi
+
+if ! command -v markdownlint-cli2 >/dev/null 2>&1; then
+    echo "markdownlint-cli2 is not installed"
+    exit 1
+fi
+
 
 $EDITOR $NOTEBOOK_PATH/README.md
 
