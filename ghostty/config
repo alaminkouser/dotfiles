@@ -10,4 +10,6 @@ cursor-style-blink = true
 
 font-size = 23
 
+clipboard-read = ask
+clipboard-write = allow
 # custom-shader = "./shaders/cursor.glsl"

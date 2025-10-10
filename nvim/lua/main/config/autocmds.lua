@@ -29,3 +29,11 @@ vim.keymap.set("n", ":", function()
 end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "<Tab>", "za", { noremap = true, silent = true })
+
+vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
+  callback = function()
+    if vim.bo.filetype == "markdown" then
+      vim.cmd("silent! update")
+    end
+  end,
+})
