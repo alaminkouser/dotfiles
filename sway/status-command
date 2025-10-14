@@ -1,0 +1,71 @@
+#!/bin/sh
+
+CPU_USAGE(){
+	CPU_USAGE_NEW=$(awk '$1 ~ /^cpu/' /proc/stat | awk 'NR==1')
+	
+	CPU_USAGE_OLD_IDLE=$(printf "$CPU_USAGE_OLD" | awk '{printf $5}')
+	
+	CPU_USAGE_OLD_TOTAL=0
+	for CPU_USAGE_OLD_VALUES in $(printf "$CPU_USAGE_OLD" | awk '{$1=""; printf substr($0,2)}')
+	do
+		CPU_USAGE_OLD_TOTAL=$(($CPU_USAGE_OLD_TOTAL+$CPU_USAGE_OLD_VALUES))
+	done
+	
+	CPU_USAGE_NEW_IDLE=$(printf "$CPU_USAGE_NEW" | awk '{printf $5}')
+	
+	CPU_USAGE_NEW_TOTAL=0
+	for CPU_USAGE_NEW_VALUES in $(printf "$CPU_USAGE_NEW" | awk '{$1=""; printf substr($0,2)}')
+	do
+		CPU_USAGE_NEW_TOTAL=$(($CPU_USAGE_NEW_TOTAL+$CPU_USAGE_NEW_VALUES))
+	done
+	
+	CPU_USAGE=$(printf "%06.2f" "$((10000*$(($(($CPU_USAGE_NEW_TOTAL-$CPU_USAGE_OLD_TOTAL))-$(($CPU_USAGE_NEW_IDLE-$CPU_USAGE_OLD_IDLE))))/$(($CPU_USAGE_NEW_TOTAL-$CPU_USAGE_OLD_TOTAL))))e-2")
+	
+	CPU_USAGE_OLD=$CPU_USAGE_NEW
+}
+
+INTERNET_SPEED_METER(){
+    INTERNET_SPEED_METER_TIME_NEW=$(date +%s.%N)
+    INTERNET_SPEED_METER_RECEIVE_NEW=$(awk '$1 ~ /^wlp2s0/' /proc/net/dev | awk '{ printf $2 }') #Yours may be diffrent from enp. Do "cat /proc/net/dev"
+    INTERNET_SPEED_METER_TRANSMIT_NEW=$(awk '$1 ~ /^wlp2s0/' /proc/net/dev | awk '{ printf $10 }') #Yours may be diffrent from enp. Do "cat /proc/net/dev"
+
+    INTERNET_SPEED_METER_DOWN=$(awk "BEGIN {print ((${INTERNET_SPEED_METER_RECEIVE_NEW}-${INTERNET_SPEED_METER_RECEIVE_OLD})/(${INTERNET_SPEED_METER_TIME_NEW}-${INTERNET_SPEED_METER_TIME_OLD}))/1024}")
+    INTERNET_SPEED_METER_UP=$(awk "BEGIN {print ((${INTERNET_SPEED_METER_TRANSMIT_NEW}-${INTERNET_SPEED_METER_TRANSMIT_OLD})/(${INTERNET_SPEED_METER_TIME_NEW}-${INTERNET_SPEED_METER_TIME_OLD}))/1024}")
+
+    INTERNET_SPEED_METER_TIME_OLD=$INTERNET_SPEED_METER_TIME_NEW
+    INTERNET_SPEED_METER_RECEIVE_OLD=$INTERNET_SPEED_METER_RECEIVE_NEW
+    INTERNET_SPEED_METER_TRANSMIT_OLD=$INTERNET_SPEED_METER_TRANSMIT_NEW
+}
+
+#INITIALIZATION
+
+CPU_USAGE_OLD=$(awk '$1 ~ /^cpu/' /proc/stat | awk 'NR==1')
+
+INTERNET_SPEED_METER_TIME_OLD=$(date +%s.%N)
+INTERNET_SPEED_METER_RECEIVE_OLD=$(awk '$1 ~ /^wlp2s0/' /proc/net/dev | awk '{ printf $2 }') #Yours may be diffrent from enp. Do "cat /proc/net/dev"
+INTERNET_SPEED_METER_TRANSMIT_OLD=$(awk '$1 ~ /^wlp2s0/' /proc/net/dev | awk '{ printf $10 }') #Yours may be diffrent from enp. Do "cat /proc/net/dev"
+
+while true
+do
+	
+	
+	OUTPUT="󰁹 $(cat "/sys/class/power_supply/BAT0/capacity")%%";
+
+	CPU_USAGE
+	OUTPUT="$OUTPUT |  $CPU_USAGE%%"
+	
+	HOSTNAME="$(ip -o -4 addr show | grep -oP "(?<=inet\s)\d+(\.\d+){3}" | sed -n "2p")"
+	if [ -z "$HOSTNAME" ]
+	then
+		OUTPUT="$OUTPUT | NO HOSTNAME"
+	else
+		INTERNET_SPEED_METER
+		OUTPUT="$OUTPUT | 󰩟 $(ip -o -4 addr show | grep -oP "(?<=inet\s)\d+(\.\d+){3}" | sed -n "2p") | $(printf "󰓅 D %.2f KB/s U %.2f KB/s T %.2f KB/s\n" "$INTERNET_SPEED_METER_DOWN" "$INTERNET_SPEED_METER_UP" "$(awk "BEGIN {print ${INTERNET_SPEED_METER_DOWN}+${INTERNET_SPEED_METER_UP}}")")"
+	fi
+	
+	OUTPUT="$OUTPUT | $(date +"%Y%m%d [%A] %H:%M:%S")"
+	
+	printf "$OUTPUT"
+	
+	sleep 1	
+done
