@@ -15,6 +15,18 @@ bindsym $mod+space floating toggle
 # mouse button for dragging.
 floating_modifier $mod normal
 
+# Move focused window by 1 pixel
+bindsym $mod+Up    move up    1px
+bindsym $mod+Down  move down  1px
+bindsym $mod+Left  move left  1px
+bindsym $mod+Right move right 1px
+
+# Resize with Mod+Ctrl+Arrow
+bindsym $mod+Ctrl+Up    resize shrink height 10 px
+bindsym $mod+Ctrl+Down  resize grow   height 10 px
+bindsym $mod+Ctrl+Left  resize shrink width  10 px
+bindsym $mod+Ctrl+Right resize grow   width  10 px
+
 # bar {
 #     position top
 
