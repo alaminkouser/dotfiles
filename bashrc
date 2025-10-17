@@ -21,7 +21,7 @@ PATH="$HOME/.local/bin/lua-language-server/bin:$PATH"
 
 # Deno
 export DENO_INSTALL="$HOME/.local/bin/deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+PATH="$DENO_INSTALL/bin:$PATH"
 
 # Nushell
 PATH="$HOME/.local/bin/nushell:$PATH"
