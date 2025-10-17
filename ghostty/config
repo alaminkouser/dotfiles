@@ -1,4 +1,4 @@
-background = #000000
+theme = catppuccin-mocha.conf
 background-opacity = 0.5
 
 window-padding-balance = true
