@@ -38,18 +38,18 @@ fi
 
 $EDITOR $NOTEBOOK_PATH/README.md
 
-prettier --write $NOTEBOOK_PATH > /dev/null 2>&1
-
-git -C $NOTEBOOK_PATH add --all
-
-GIT_DIFF=$(git -C $NOTEBOOK_PATH diff --cached)
-
-if [ "$GIT_DIFF" = "" ]; then
-    exit 0
-fi
-
 # Run everything from Gemini API call to end in background (silently)
 {
+    prettier --write $NOTEBOOK_PATH > /dev/null 2>&1
+
+    git -C $NOTEBOOK_PATH add --all
+
+    GIT_DIFF=$(git -C $NOTEBOOK_PATH diff --cached)
+
+    if [ "$GIT_DIFF" = "" ]; then
+        exit 0
+    fi
+
     gemini_response=$(curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent" \
       -H 'Content-Type: application/json' \
       -H "X-goog-api-key: $GEMINI_API_KEY" \
