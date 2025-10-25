@@ -1,6 +1,8 @@
 theme = catppuccin-mocha.conf
 background-opacity = 0.5
 
+keybind = F11=toggle_fullscreen
+
 window-padding-balance = true
 window-padding-color = extend
 mouse-hide-while-typing = true

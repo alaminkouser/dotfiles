@@ -1,5 +1,6 @@
 vim.pack.add({
   { src = "https://github.com/neovim/nvim-lspconfig" },
+  { src = "https://github.com/arnamak/stay-centered.nvim" },
   {
     src = "https://github.com/saghen/blink.cmp",
     version = vim.version.range("*"),
