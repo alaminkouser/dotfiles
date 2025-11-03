@@ -1,0 +1,26 @@
+server:
+  port: 8080
+  database: /home/aak/FILES/filebrowser/database.db
+  sources:
+  - path: /home/aak/FILES/filebrowser/home
+  cacheDir: /home/aak/FILES/filebrowser/tmp
+  logging:
+  - levels: info|warning|error
+    apiLevels: info|warning|error
+    output: stdout
+    noColors: false
+    utc: true
+frontend:
+  name: HOME
+auth:
+  adminUsername: aak
+userDefaults:
+  permissions:
+    api: false
+    admin: false
+    modify: false
+    share: false
+    realtime: false
+    delete: false
+    create: false
+    download: false

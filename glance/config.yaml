@@ -1,0 +1,27 @@
+server:
+  port: 8081
+pages:
+  - name: Home
+    columns:
+      - size: small
+        widgets:
+          - type: clock
+            hour-format: 24h
+            timezones:
+              - timezone: Asia/Kuala_Lumpur
+                label: Malaysia
+              - timezone: Asia/Hong_Kong
+                label: Hong Kong
+          - type: server-stats
+            servers:
+              - type: local
+                name: Services
+      - size: full
+        widgets:
+          - type: reddit
+            subreddit: bangladesh
+            show-thumbnails: true
+            show-flairs: true
+            cache: 30s
+branding:
+  hide-footer: true

@@ -75,4 +75,8 @@ input type:touchpad {
 default_border none
 focus_follows_mouse no
 
+# Turn on or off screen when lid opens or closes
+bindswitch --locked lid:on output * dpms off
+bindswitch --locked lid:off output * dpms on
+
 include /etc/sway/config.d/*
