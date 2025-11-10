@@ -1,42 +1,11 @@
-# ToDo: Need to re-write PS1
-# PS1="\[\e[5 q\]\[\e]2;[\j]\$?:\w\a\]\[\033[38;2;137;180;250;1m\]\u\[\033[38;2;249;226;175;1m\]@\[\033[38;2;137;180;250;1m\]\h\[\033[38;2;205;214;244;1m\]:\[\033[38;2;166;227;161;1m\]\w\[\033[0m\]\n\[\033[38;2;205;214;244;1m\][\[\033[38;2;243;139;168;1m\]\j\[\033[0m\]\[\033[38;2;205;214;244;1m\]]\[\033[38;2;243;139;168;1m\]\$?\[\033[0m\]\$(if [[ "\$CONDA_DEFAULT_ENV" != "base" && -n "\$CONDA_DEFAULT_ENV" ]]; then printf "[\$CONDA_DEFAULT_ENV]"; fi)\[\033[38;2;205;214;244;1m\]\$\[\033[0m\] "
-# PS2="\[\033[38;2;205;214;244;1m\]>\[\033[0m\] "
-
-
-alias ls="ls -lah --group-directories-first --color"
-alias z="zellij attach --create main"
-alias aria2c="aria2c -x 16 --seed-time=0"
-alias rm="rm -rfv"
-alias glow="glow -s $HOME/.config/glow/theme.json"
-
 export EDITOR="nvim"
-
-PATH="$HOME/.local/bin:$PATH"
-PATH="$HOME/.local/bin/busybox:$PATH"
-PATH="$HOME/.local/bin/nvim/bin:$PATH"
-PATH="$HOME/.local/bin/yazi:$PATH"
-PATH="$HOME/.local/bin/node/bin:$PATH"
-PATH="$HOME/.local/bin/zig:$PATH"
-PATH="$HOME/.local/bin/lua:$PATH"
-PATH="$HOME/.local/bin/lua-language-server/bin:$PATH"
-
-# Deno
-export DENO_INSTALL="$HOME/.local/bin/deno"
-PATH="$DENO_INSTALL/bin:$PATH"
-
-# Nushell
-PATH="$HOME/.local/bin/nushell:$PATH"
-
-# Pandoc
-PATH="$HOME/.local/bin/pandoc:$PATH"
-
-# google-cloud-sdk
-PATH="$HOME/.local/bin/google-cloud-sdk/bin:$PATH"
 
 # Dotnet
 export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
 
+source $(dirname "${BASH_SOURCE[0]}")/path
 source $(dirname "${BASH_SOURCE[0]}")/ps
+source $(dirname "${BASH_SOURCE[0]}")/alias
 
 which gpgconf > /dev/null && export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
