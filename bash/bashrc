@@ -3,9 +3,9 @@ export EDITOR="nvim"
 # Dotnet
 export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
 
-source $(dirname "${BASH_SOURCE[0]}")/path
-source $(dirname "${BASH_SOURCE[0]}")/ps
-source $(dirname "${BASH_SOURCE[0]}")/alias
+source "$(dirname "${BASH_SOURCE[0]}")/path"
+source "$(dirname "${BASH_SOURCE[0]}")/ps"
+source "$(dirname "${BASH_SOURCE[0]}")/alias"
 
 which gpgconf > /dev/null && export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
