@@ -4,7 +4,7 @@ set $mod Mod4
 
 include /etc/sway/config-vars.d/*
 
-output * bg #000000 solid_color
+# output * bg #000000 solid_color
 
 # Start Yofi Launcher
 bindsym $mod+Return exec ps cax | grep yofi || $HOME/.local/bin/yofi

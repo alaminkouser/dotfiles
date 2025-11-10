@@ -1,0 +1,28 @@
+{
+  "plugins": {
+    "autolist.nvim": [],
+    "blink.cmp": {
+      "version": ">=0.0.0"
+    },
+    "gitsigns.nvim": [],
+    "grug-far.nvim": [],
+    "lua-language-server": [],
+    "lualine.nvim": [],
+    "noice.nvim": [],
+    "nui.nvim": [],
+    "nvim": [],
+    "nvim-lint": [],
+    "nvim-lspconfig": [],
+    "nvim-notify": [],
+    "nvim-treesitter": [],
+    "nvim-ufo": [],
+    "nvim-web-devicons": [],
+    "plenary.nvim": [],
+    "promise-async": [],
+    "render-markdown.nvim": [],
+    "stay-centered.nvim": [],
+    "telescope.nvim": [],
+    "typst-preview.nvim": [],
+    "yazi.nvim": []
+  }
+}
