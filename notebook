@@ -40,7 +40,7 @@ $EDITOR $NOTEBOOK_PATH/README.md
 
 # Run everything from Gemini API call to end in background (silently)
 {
-    prettier --write $NOTEBOOK_PATH > /dev/null 2>&1
+    prettier --write $NOTEBOOK_PATH
 
     git -C $NOTEBOOK_PATH add --all
 
@@ -50,9 +50,9 @@ $EDITOR $NOTEBOOK_PATH/README.md
         exit 0
     fi
 
-    gemini_response=$(curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent" \
+    gemini_response=$(curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent" \
       -H 'Content-Type: application/json' \
-      -H "X-goog-api-key: $GEMINI_API_KEY" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
       -X POST \
       -d "{
         \"contents\": [
@@ -73,8 +73,12 @@ $EDITOR $NOTEBOOK_PATH/README.md
     if [ "$commit_message" = "" ]; then
         exit 1
     fi
+ 
+    if [ "$commit_message" = "null" ]; then
+        exit 1
+    fi
 
-    git -C $NOTEBOOK_PATH commit -m "$commit_message" > /dev/null 2>&1
+    git -C $NOTEBOOK_PATH commit -m "$commit_message"
 
-    git -C $NOTEBOOK_PATH push > /dev/null 2>&1
+    git -C $NOTEBOOK_PATH push
 } > /dev/null 2>&1 &
