@@ -1,6 +1,10 @@
 theme = catppuccin-mocha.conf
 background-opacity = 0.5
 
+window-decoration = client
+
+window-save-state = always
+
 keybind = F11=toggle_fullscreen
 
 window-padding-balance = true
@@ -9,8 +13,6 @@ mouse-hide-while-typing = true
 
 cursor-style = bar
 cursor-style-blink = true
-
-font-size = 23
 
 clipboard-read = ask
 clipboard-write = allow
