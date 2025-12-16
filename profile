@@ -4,9 +4,11 @@ if [ -n "$BASH_VERSION" ]; then
   fi
 fi
 
+if ! pgrep -x "gpg-agent" > /dev/null; then
+  gpgconf --launch gpg-agent
+fi
+
 if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
-  # gpgconf --launch gpg-agent
-  $(which sshd)
+  # $(which sshd)
   # pg_ctl -D $HOME/FILES/DATABASE -l /dev/null start  
-  # exec sway
 fi
