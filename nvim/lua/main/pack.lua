@@ -35,7 +35,7 @@ vim.pack.add({
   { src = "https://github.com/folke/noice.nvim" },
 
   -- LSP --
-  { src = "https://github.com/luals/lua-language-server" },
+  -- { src = "https://github.com/luals/lua-language-server" },
 
   -- LINT --
   { src = "https://github.com/mfussenegger/nvim-lint" },
