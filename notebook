@@ -35,7 +35,7 @@ if ! command -v markdownlint-cli2 >/dev/null 2>&1; then
     exit 1
 fi
 
-
+git -C $NOTEBOOK_PATH pull > /dev/null 2>&1 &
 $EDITOR $NOTEBOOK_PATH/README.md
 
 # Run everything from Gemini API call to end in background (silently)

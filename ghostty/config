@@ -1,5 +1,5 @@
 theme = catppuccin-mocha.conf
-background-opacity = 0.5
+background-opacity = 0.85
 
 window-decoration = client
 
