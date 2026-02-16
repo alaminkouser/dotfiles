@@ -28,5 +28,3 @@ curl "https://raw.githubusercontent.com/junegunn/fzf/refs/heads/master/bin/fzf-p
   --progress-bar
 chmod 700 "$HOME/.local/bin/fzf-preview.sh"
 
-
-

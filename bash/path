@@ -2,6 +2,7 @@ PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.local/bin/nvim/bin:$PATH"
 PATH="$HOME/.local/bin/zig:$PATH"
 PATH="$HOME/.local/bin/lua:$PATH"
+PATH="$HOME/.local/bin/nodejs/bin:$PATH"
 PATH="$HOME/.local/bin/lua-language-server/bin:$PATH"
 
 # Deno
