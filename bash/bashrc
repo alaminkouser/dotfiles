@@ -4,6 +4,9 @@ source "$(dirname "${BASH_SOURCE[0]}")/alias"
 source "$(dirname "${BASH_SOURCE[0]}")/fzf"
 
 export GNUPGHOME="$HOME/.config/gnupg"
+if ! ps | grep -q "gpg-agent"; then
+    gpgconf --launch gpg-agent
+fi
 which gpgconf > /dev/null && export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 export EDITOR="nvim"

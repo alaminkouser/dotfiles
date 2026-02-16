@@ -16,4 +16,4 @@ cursor-style-blink = true
 
 clipboard-read = ask
 clipboard-write = allow
-# custom-shader = "./shaders/cursor.glsl"
+custom-shader = "./shaders/cursor.glsl"
