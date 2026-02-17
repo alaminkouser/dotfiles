@@ -1,9 +1,11 @@
+window-theme = "ghostty"
+window-height = "36"
+window-width = "120"
 theme = catppuccin-mocha.conf
-background-opacity = 0.85
+background-opacity = 0.75
 
-window-decoration = client
+window-decoration = server
 
-window-save-state = always
 
 keybind = F11=toggle_fullscreen
 

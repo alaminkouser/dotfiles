@@ -9,6 +9,10 @@
       "src": "https://github.com/saghen/blink.cmp",
       "version": ">=0.0.0"
     },
+    "ghostty.nvim": {
+      "rev": "86114c996e87108c3e7e5d4d5596581914374a77",
+      "src": "https://github.com/isak102/ghostty.nvim"
+    },
     "gitsigns.nvim": {
       "rev": "5813e4878748805f1518cee7abb50fd7205a3a48",
       "src": "https://github.com/lewis6991/gitsigns.nvim"

@@ -42,4 +42,7 @@ vim.pack.add({
 
   -- Typst Preview ---
   { src = "https://github.com/chomosuke/typst-preview.nvim" },
+
+  -- Ghostty --
+  { src = "https://github.com/isak102/ghostty.nvim" },
 })
