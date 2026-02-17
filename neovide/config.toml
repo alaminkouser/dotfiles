@@ -1,3 +1,5 @@
+frame = "none"
+
 [font]
-normal = ["GeistMono Nerd Font Propo"]
-size = 20.0
+normal = ["JetBrainsMono Nerd Font Mono"]
+size = 12.0
