@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+# Ensure exactly one argument
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <arg>"
+    exit 1
+fi
+
+ARG=$1
+
+# Run the pipeline and capture response
+RESPONSE=$(echo "$ARG" | \
+    gpg --clearsign | \
+    curl -s -X PUT https://alaminkouser.com/status/ \
+         -H "Content-Type: text/plain" \
+         --data-binary @-)
+
+# Check if response is exactly "true"
+if [ "$RESPONSE" = "true" ]; then
+    printf "OK\n"
+    exit 0
+else
+    printf "NOT-OK\n"
+    exit 1
+fi
