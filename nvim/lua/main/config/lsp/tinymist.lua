@@ -2,6 +2,7 @@ local pinned_file = nil
 
 vim.lsp.enable("tinymist")
 vim.lsp.config["tinymist"] = {
+  offset_encoding = "utf-8",
   cmd = { "tinymist" },
   filetypes = { "typst" },
   settings = {},

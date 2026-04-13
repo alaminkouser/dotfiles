@@ -8,6 +8,10 @@ if ! pgrep -x "gpg-agent" > /dev/null; then
   gpgconf --launch gpg-agent
 fi
 
+if ! pgrep -x "zeroclaw" > /dev/null; then
+  zeroclaw daemon > /dev/null 2>&1 &
+fi
+
 if ! pgrep -x "aria2c" > /dev/null; then
   aria2c --enable-rpc=true \
     --rpc-listen-all=false \

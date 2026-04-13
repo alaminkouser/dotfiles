@@ -2,3 +2,13 @@
 ratio = [0, 1, 2]
 linemode = "none"
 show_hidden = true
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*"
+run = "git"
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*/"
+run = "git"

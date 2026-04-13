@@ -7,15 +7,18 @@ if [ "$#" -ne 1 ]; then
 fi
 
 ARG=$1
+KEY="$HOME/.ssh/id_rsa"
 
-# Run the pipeline and capture response
-RESPONSE=$(echo "$ARG" | \
-    gpg --clearsign | \
-    curl -s -X PUT https://alaminkouser.com/status/ \
+# Sign the argument using SSH key
+SIGNATURE=$(echo -n "$ARG" | ssh-keygen -Y sign -f "$KEY" -n file 2>/dev/null)
+
+# Send the argument + signature to the server (example: sending both)
+RESPONSE=$(/usr/bin/printf "%s\n%s" "$ARG" "$SIGNATURE" | \
+    curl -s -X PUT "https://alaminkouser.com/status/" \
          -H "Content-Type: text/plain" \
          --data-binary @-)
 
-# Check if response is exactly "true"
+# Check response
 if [ "$RESPONSE" = "true" ]; then
     printf "OK\n"
     exit 0
