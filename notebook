@@ -35,19 +35,22 @@ if ! command -v markdownlint-cli2 >/dev/null 2>&1; then
     exit 1
 fi
 
-git -C $NOTEBOOK_PATH pull > /dev/null 2>&1 &
-$EDITOR $NOTEBOOK_PATH/README.md
+git -C $NOTEBOOK_PATH pull
 
-# Run everything from Gemini API call to end in background (silently)
-{
+if [ ! -t 0 ]; then
+    echo "No terminal (non-interactive)"
+    exit 1
+fi
+
+if [ "$#" -eq 1 ] && [ "$1" = "commit" ]; then
     prettier --write $NOTEBOOK_PATH
-
     git -C $NOTEBOOK_PATH add --all
 
     GIT_DIFF=$(git -C $NOTEBOOK_PATH diff --cached)
 
     if [ "$GIT_DIFF" = "" ]; then
-        exit 0
+        echo "No changes to commit"
+        exit 1
     fi
 
     gemini_response=$(curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent" \
@@ -79,6 +82,29 @@ $EDITOR $NOTEBOOK_PATH/README.md
     fi
 
     git -C $NOTEBOOK_PATH commit -m "$commit_message"
+    exit 0
+fi
 
+if [ "$#" -eq 1 ] && [ "$1" = "push" ]; then
     git -C $NOTEBOOK_PATH push
-} > /dev/null 2>&1 &
+    echo "OK"
+    exit 0
+fi
+
+if [ "$#" -eq 1 ] && [ "$1" = "open" ]; then
+    $EDITOR $NOTEBOOK_PATH/README.md
+    exit 0
+fi
+
+
+echo "Usage: notebook <command>"
+echo ""
+echo "Commands:"
+echo "  open      Open the notebook's README.md in the default EDITOR"
+echo "  commit    Format, stage all changes, and commit with an AI-generated message"
+echo "  push      Push changes to the remote repository"
+echo "  help      Show this help message"
+echo ""
+echo "Environment Variables:"
+echo "  NOTEBOOK_PATH   Path to your notebook git repository (required)"
+echo "  GEMINI_API_KEY  Gemini API key for generating commit messages (required)"
