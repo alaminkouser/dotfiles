@@ -43,8 +43,9 @@ if [ ! -t 0 ]; then
 fi
 
 if [ "$#" -eq 1 ] && [ "$1" = "commit" ]; then
-    prettier --write $NOTEBOOK_PATH
-    git -C $NOTEBOOK_PATH add --all
+    prettier --write "$NOTEBOOK_PATH"
+    
+    git -C "$NOTEBOOK_PATH" add --all
 
     GIT_DIFF=$(git -C $NOTEBOOK_PATH diff --cached)
 
@@ -53,21 +54,26 @@ if [ "$#" -eq 1 ] && [ "$1" = "commit" ]; then
         exit 1
     fi
 
+    PAYLOAD=$(jq -n \
+    --arg diff "$(git -C "$NOTEBOOK_PATH" diff --cached)" \
+        '{
+            contents: [
+            {
+                parts: [
+                    {
+                        text: "You are an assistant that writes git commit messages.\nI will provide the output of git diff.\nYour task: summarize the changes into a short, clear commit message.\n\nGuidelines:\n* Keep it under 72 characters.\n* A phrase or keywords are enough.\n* Focus on what changed and why.\n\nHere is the git diff:\n\n" + $diff
+                    }
+                ]
+            }
+            ]
+        }'
+    )
+
     gemini_response=$(curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent" \
       -H 'Content-Type: application/json' \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -X POST \
-      -d "{
-        \"contents\": [
-          {
-            \"parts\": [
-              {
-                \"text\": \"You are an assistant that writes git commit messages.\nI will provide the output of `git diff`.\nYour task: summarize the changes into a short, clear commit message.\n\nGuidelines:\n\n* Keep it under 72 characters.\n* A phrase or keywords are enough (no need for full sentences).\n* Focus on *what changed* and *why*.\n\nHere is the git diff:\\n\\n$GIT_DIFF\"
-              }
-            ]
-          }
-        ]
-      }")
+      -d "$PAYLOAD")
 
     gemini_response_without_newlines=$(echo "$gemini_response" | tr "\n" " ")
 

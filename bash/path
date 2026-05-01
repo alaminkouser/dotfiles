@@ -11,3 +11,6 @@ PATH="$DENO_INSTALL/bin:$PATH"
 
 # google-cloud-sdk
 PATH="$HOME/.local/bin/google-cloud-sdk/bin:$PATH"
+
+# solr
+PATH="$HOME/.local/bin/solr/bin:$PATH"
