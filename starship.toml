@@ -1,6 +1,8 @@
 # Get editor completions based on the config schema
 "$schema" = "https://starship.rs/config-schema.json"
 
+format = """$custom$all"""
+
 palette = "catppuccin_mocha"
 add_newline = false
 
@@ -52,3 +54,13 @@ error_symbol = "[✗](bold red) "
 
 [battery]
 disabled = false
+
+[custom.zellij]
+command = """
+if [ -n "$ZELLIJ" ] && [ "$ZELLIJ" == "0" ]; then
+  printf " $ZELLIJ_SESSION_NAME"
+fi
+"""
+when = "true"
+shell = ["bash"]
+style = "bold rosewater"

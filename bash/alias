@@ -1,5 +1,6 @@
 alias ls="ls -lah --group-directories-first --color"
-alias z="zellij attach --create main"
+alias z="XDG_RUNTIME_DIR=/run/user/$(id -u) zellij attach --create main"
+alias zellij="XDG_RUNTIME_DIR=/run/user/$(id -u) zellij"
 alias aria2c="aria2c -x 16 --seed-time=0"
 alias rm="rm -rfv"
 alias glow="glow -s $HOME/.config/glow/theme.json"

@@ -1,12 +1,22 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "d1c8baa"
-hash = "1e047e1b13b5e3fc6ab1f5d0d04a14e2"
+rev = "5d5c480"
+hash = "9105494e98299f392aee95340066da9f"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "babfd0f"
-hash = "26db011a778f261d730d4f5f8bf24b3f"
+rev = "5d5c480"
+hash = "88e56a64b7ce7c4314427452343fef17"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "5d5c480"
+hash = "7b625412411be411153886894d9acaf"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:mime-ext"
+rev = "5d5c480"
+hash = "2678c84a0b3a0b22504e918ccaf99011"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"

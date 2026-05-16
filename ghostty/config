@@ -1,6 +1,6 @@
 window-theme = "ghostty"
-window-height = "35"
-window-width = "120"
+window-height = "50"
+window-width = "150"
 window-subtitle = "working-directory"
 theme = catppuccin-mocha.conf
 # background-opacity = 0.75
@@ -17,4 +17,4 @@ cursor-style-blink = true
 
 clipboard-read = ask
 clipboard-write = allow
-custom-shader = "./shaders/cursor.glsl"
+# custom-shader = "./shaders/cursor.glsl"

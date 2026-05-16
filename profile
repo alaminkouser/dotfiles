@@ -4,12 +4,16 @@ if [ -n "$BASH_VERSION" ]; then
   fi
 fi
 
-if ! pgrep -x "gpg-agent" > /dev/null; then
-  gpgconf --launch gpg-agent
-fi
+# if ! pgrep -x "gpg-agent" > /dev/null; then
+  # gpgconf --launch gpg-agent
+# fi
 
-if ! pgrep -x "zeroclaw" > /dev/null; then
-   # zeroclaw daemon > /dev/null 2>&1 &
+# if ! pgrep -x "zeroclaw" > /dev/null; then
+  # zeroclaw daemon > /dev/null 2>&1 &
+# fi
+
+if ! pgrep -x "sshd" > /dev/null; then
+  $(which sshd) -p 2222 -o PrintMotd=no -o PermitRootLogin=no
 fi
 
 if ! pgrep -x "aria2c" > /dev/null; then
@@ -23,5 +27,5 @@ if ! pgrep -x "aria2c" > /dev/null; then
     --continue=true \
     --daemon=true \
     -x 16 \
-    --dir="$HOME/FILES/DOWNLOADS"
+    --dir="$HOME/STORAGE/DOWNLOADS"
 fi
