@@ -5,7 +5,7 @@ pane_frames false
 simplified_ui true
 
 keybinds {
-  normal {
+  normal clear-defaults=true {
     bind "Ctrl s" { 
       LaunchOrFocusPlugin "zellij:session-manager" {
         floating true
