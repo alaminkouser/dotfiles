@@ -63,4 +63,4 @@ fi
 """
 when = "test -n \"$ZELLIJ\""
 shell = ["bash"]
-format = "[](green)[$output](bold crust bg:green)[](green) "
+format = "[](surface0)[$output](bold green bg:surface0)[](surface0) "

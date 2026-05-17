@@ -9,6 +9,18 @@ require("lualine").setup({
     lualine_a = {
       {
         function()
+          local in_zellij = vim.env.ZELLIJ
+          local session = vim.env.ZELLIJ_SESSION_NAME
+	  if in_zellij and in_zellij ~= "" and session and session ~= "" then
+            return session
+	  end
+	  return ""
+        end,
+	color = { fg = palette.green, bg = palette.surface0 },
+	separator = { left = "", right = "" },
+      },
+      {
+        function()
           local reg = vim.fn.reg_recording()
           if reg == "" then
             return ""

@@ -8,7 +8,6 @@ if command -v zoxide &> /dev/null; then
   alias cd="zoxide_z"
 fi
 
-alias z="XDG_RUNTIME_DIR=/run/user/$(id -u) zellij attach --create z"
 alias zellij="XDG_RUNTIME_DIR=/run/user/$(id -u) zellij"
 alias aria2c="aria2c -x 16 --seed-time=0"
 alias rm="rm -rfv"

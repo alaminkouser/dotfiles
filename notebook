@@ -35,7 +35,7 @@ if ! command -v markdownlint-cli2 >/dev/null 2>&1; then
     exit 1
 fi
 
-git -C $NOTEBOOK_PATH pull
+# git -C $NOTEBOOK_PATH pull
 
 if [ ! -t 0 ]; then
     echo "No terminal (non-interactive)"
