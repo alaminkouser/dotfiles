@@ -1,0 +1,6 @@
+export HISTCONTROL=ignoreboth
+export PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
+export HISTTIMEFORMAT="%F %T "
+
+export HISTSIZE=100000
+export HISTFILESIZE=10000000

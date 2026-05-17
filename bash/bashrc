@@ -1,3 +1,4 @@
+source "$(dirname "${BASH_SOURCE[0]}")/history"
 source "$(dirname "${BASH_SOURCE[0]}")/path"
 source "$(dirname "${BASH_SOURCE[0]}")/ps"
 source "$(dirname "${BASH_SOURCE[0]}")/alias"
@@ -7,3 +8,5 @@ export GNUPGHOME="$HOME/.config/gnupg"
 # which gpgconf > /dev/null && export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 export EDITOR="nvim"
+
+eval "$(zoxide init --cmd zoxide_z bash)"

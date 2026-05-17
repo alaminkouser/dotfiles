@@ -58,9 +58,9 @@ disabled = false
 [custom.zellij]
 command = """
 if [ -n "$ZELLIJ" ] && [ "$ZELLIJ" == "0" ]; then
-  printf " $ZELLIJ_SESSION_NAME"
+  printf "$ZELLIJ_SESSION_NAME"
 fi
 """
-when = "true"
+when = "test -n \"$ZELLIJ\""
 shell = ["bash"]
-style = "bold rosewater"
+format = "[](green)[$output](bold crust bg:green)[](green) "
