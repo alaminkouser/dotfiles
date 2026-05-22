@@ -1,0 +1,92 @@
+#!/usr/bin/env sh
+
+# autocommit.sh
+#
+# Auto-stage + Gemini-generated commit message + git commit
+#
+# Requirements:
+# - git
+# - curl
+# - jq
+# - GEMINI_API_KEY in env
+#
+# Usage:
+#   autocommit.sh
+#
+# Optional:
+#   MODEL=gemini-2.5-flash autocommit.sh
+
+set -eu
+
+MODEL="${MODEL:-gemini-2.5-flash}"
+
+git rev-parse --is-inside-work-tree >/dev/null 2>&1 || {
+    echo "Not inside a git repository." >&2
+    exit 1
+}
+
+: "${GEMINI_API_KEY:?GEMINI_API_KEY is not set}"
+
+git add -A
+
+if git diff --cached --quiet; then
+    echo "No changes to commit."
+    exit 0
+fi
+
+DIFF=$(git diff --cached --minimal)
+
+PROMPT=$(cat <<EOF
+Write a concise conventional commit message.
+
+Rules:
+- Output ONLY the commit message
+- Use conventional commits
+- Be specific
+- No markdown
+- No quotes
+- Use Multi Lines for detailed commits
+
+Git diff:
+
+$DIFF
+EOF
+)
+
+API_URL="https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${GEMINI_API_KEY}"
+
+RESPONSE=$(
+    jq -n --arg prompt "$PROMPT" '{
+        contents: [
+            {
+                parts: [
+                    { text: $prompt }
+                ]
+            }
+        ]
+    }' |
+    curl -fsS \
+        -H "Content-Type: application/json" \
+        -X POST \
+        -d @- \
+        "$API_URL"
+)
+
+COMMIT_MSG=$(
+    printf '%s' "$RESPONSE" |
+    jq -r '.candidates[0].content.parts[0].text // empty' |
+    sed '/^[[:space:]]*$/d' |
+    head -n 1
+)
+
+if [ -z "$COMMIT_MSG" ]; then
+    echo "Failed to generate commit message." >&2
+    exit 1
+fi
+
+echo "Commit message:"
+echo "----------------------------------------"
+echo "$COMMIT_MSG"
+echo "----------------------------------------"
+
+git commit -m "$COMMIT_MSG"

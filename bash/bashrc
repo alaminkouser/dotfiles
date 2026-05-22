@@ -4,6 +4,8 @@ source "$(dirname "${BASH_SOURCE[0]}")/ps"
 source "$(dirname "${BASH_SOURCE[0]}")/alias"
 source "$(dirname "${BASH_SOURCE[0]}")/fzf"
 source "$(dirname "${BASH_SOURCE[0]}")/zellij"
+source "$(dirname "${BASH_SOURCE[0]}")/direnv"
+
 
 export GNUPGHOME="$HOME/.config/gnupg"
 # which gpgconf > /dev/null && export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"

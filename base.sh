@@ -11,11 +11,14 @@ conda install\
   conda-forge::markdownlint-cli2\
   conda-forge::nvim\
   conda-forge::openssh\
+  conda-forge::ripgrep\
   conda-forge::starship\
   conda-forge::yazi\
+  conda-forge::yt-dlp\
   conda-forge::zellij\
   conda-forge::zig\
   conda-forge::zoxide\
+  pyright\
   main::curl\
   main::ffmpeg\
   main::file\
