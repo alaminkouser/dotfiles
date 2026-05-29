@@ -7,12 +7,17 @@ simplified_ui true
 
 keybinds {
   normal clear-defaults=true {
-    bind "Ctrl z" { 
-      LaunchOrFocusPlugin "zellij:session-manager" {
+    bind "Ctrl d" { Detach; }
+    bind "Ctrl Space" {
+      Run "sh" "-c" "~/.config/zellij/session-manager.sh" {
         floating true
-        move_to_focused_node true
+	borderless true
+        close_on_exit true
+        x "0%"
+        y "0%"
+        width "100%"
+        height "100%"
       }
     }
-    bind "Ctrl Space" { Detach; }
   }
 }

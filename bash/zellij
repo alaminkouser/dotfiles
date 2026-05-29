@@ -1,5 +1,5 @@
 if [[ -n "$DISPLAY" || -n "$WAYLAND_DISPLAY" || -n "$SSH_TTY" ]]; then
   if [[ -z "$ZELLIJ" ]]; then
-    XDG_RUNTIME_DIR=/run/user/$(id -u) zellij attach --create z && exit
+    XDG_RUNTIME_DIR=/run/user/$(id -u) zellij attach --create Z && exit
   fi
 fi
