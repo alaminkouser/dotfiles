@@ -11,7 +11,7 @@ keybinds {
     bind "Ctrl Space" {
       Run "sh" "-c" "~/.config/zellij/session-manager.sh" {
         floating true
-	borderless true
+        borderless true
         close_on_exit true
         x "0%"
         y "0%"
