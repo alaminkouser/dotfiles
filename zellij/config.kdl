@@ -2,7 +2,6 @@ show_startup_tips false
 session_serialization false
 theme "catppuccin-mocha"
 default_layout "main"
-theme "default"
 dim_inactive_panes true
 advanced_mouse_actions false
 mouse_hover_effects false
@@ -12,14 +11,16 @@ simplified_ui true
 keybinds {
   normal clear-defaults=true {
     bind "Ctrl Space" {
-      Run "sh" "-c" "$HOME/.config/zellij/session-manager.sh" {
+      Run "sh" "-c" "$HOME/.config/zellij/control-panel" {
+        name "Control Panel"
+        pinned true
         floating true
-        borderless true
+        borderless false
         close_on_exit true
-        x "0%"
-        y "0%"
-        width "100%"
-        height "100%"
+        x "10%"
+        y "10%"
+        width "80%"
+        height "80%"
       }
     }
   }
