@@ -24,7 +24,7 @@ if [ "$session" = "# DETACH" ]; then
     exit 0
 fi
 
-if printf "%s\n" "$session" | grep -q "^[^#][A-Za-z0-9-]*$"; then
+if printf "%s\n" "$session" | grep -Eq "^[A-Za-z][A-Za-z0-9]{0,14}$"; then
     zellij action switch-session $session
     exit 0
 fi
