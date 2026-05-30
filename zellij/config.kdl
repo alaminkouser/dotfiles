@@ -12,7 +12,7 @@ keybinds {
   normal clear-defaults=true {
     bind "Ctrl Space" {
       Run "sh" "-c" "$HOME/.config/zellij/control-panel" {
-        name "Control Panel"
+        name ""
         pinned true
         floating true
         borderless false
