@@ -29,6 +29,6 @@ if printf "%s\n" "$session" | grep -Eq "^[A-Za-z][A-Za-z0-9]{0,14}$"; then
     exit 0
 fi
 
-printf "NOT VALID"
+gum style --align center --width $(tput cols) "Invalid session name. Use 1-15 alphanumeric characters, starting with a letter."
 sleep 5
 exit 1
