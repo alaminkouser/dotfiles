@@ -4,7 +4,12 @@
 
 control_command=$(
     printf "# PANE:NEW\n# FZF\n# CREATE NEW SESSION\n# DETACH\n# SCROLL\n# CLOSE\n%s" "$(zellij list-sessions --short | sed "s/^/SESSION:/")" | sort -f 2>/dev/null |
-    gum filter --placeholder "Search..." --no-show-help --indicator " " --indicator.foreground "#FFF" --cursor-text.background "#FFF" --cursor-text.foreground "#000"
+    gum filter \
+        --placeholder "Search..." \
+        --no-show-help \
+        --indicator " " \
+        --indicator.foreground "#A6E3A1" \
+        --cursor-text.foreground "#A6E3A1"
 )
 
 [ -z "$control_command" ] && exit 0
