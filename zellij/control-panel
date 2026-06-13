@@ -7,7 +7,7 @@ control_command=$(
     gum filter \
         --placeholder "Search..." \
         --no-show-help \
-        --indicator "" \
+        --indicator "󰋘" \
         --indicator.foreground "#A6E3A1" \
         --cursor-text.foreground "#A6E3A1"
 )
