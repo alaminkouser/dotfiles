@@ -41,7 +41,7 @@ fi
 
 case "$control_command" in
     SESSION:*)
-        if printf "%s" "${control_command#SESSION:}" | grep -Eq "^[A-Za-z][A-Za-z0-9]{0,14}$"; then
+        if printf "%s" "${control_command#SESSION:}" | grep -Eq "^(󰫈|[A-Za-z][A-Za-z0-9]{0,14})$"; then
 	    zellij action switch-session $(printf "%s" "${control_command#SESSION:}")
             exit 0
         fi

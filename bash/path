@@ -5,6 +5,11 @@ PATH="$HOME/.local/bin/lua:$PATH"
 PATH="$HOME/.local/bin/nodejs/bin:$PATH"
 PATH="$HOME/.local/bin/lua-language-server/bin:$PATH"
 
+# go
+export GOPATH="$HOME/.local/share/go"
+export PATH="$PATH:$GOPATH/bin"
+PATH="$PATH:$HOME/.local/bin/go/bin"
+
 # Deno
 export DENO_INSTALL="$HOME/.local/bin/deno"
 PATH="$DENO_INSTALL/bin:$PATH"
