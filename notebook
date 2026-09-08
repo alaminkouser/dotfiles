@@ -69,7 +69,7 @@ if [ "$#" -eq 1 ] && [ "$1" = "commit" ]; then
         }'
     )
 
-    gemini_response=$(curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent" \
+    gemini_response=$(curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemma-4-26b-a4b-it:generateContent" \
       -H 'Content-Type: application/json' \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -X POST \

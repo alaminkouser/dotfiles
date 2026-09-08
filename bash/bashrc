@@ -1,3 +1,5 @@
+export LC_ALL="C.UTF-8"
+
 source "$(dirname "${BASH_SOURCE[0]}")/history"
 source "$(dirname "${BASH_SOURCE[0]}")/path"
 source "$(dirname "${BASH_SOURCE[0]}")/ps"
