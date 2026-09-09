@@ -12,7 +12,7 @@ control_command=$(
         --no-show-help \
         --indicator "󰫈" \
         --indicator.foreground "#F38BA8" \
-	--text.foreground "#F0C6C6" \
+        --text.foreground "#F0C6C6" \
         --cursor-text.foreground "#F38BA8"
 )
 
