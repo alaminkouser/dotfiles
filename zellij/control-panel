@@ -33,13 +33,13 @@ if [ "$control_command" = "# CLOSE" ]; then
 fi
 
 if [ "$control_command" = "NOTEBOOK" ]; then
-    bat --style=plain --paging=always "$NOTEBOOK_PATH/$(cd $NOTEBOOK_PATH && fzf)"
+    leaf "$NOTEBOOK_PATH/$(cd $NOTEBOOK_PATH && fzf)"
     exit 0
 fi
 
 case "$control_command" in
     NOTEBOOK:PERSONS:*)
-        bat --style=plain --paging=always "$NOTEBOOK_PATH/PERSONS/${control_command#NOTEBOOK:PERSONS:}"
+        leaf "$NOTEBOOK_PATH/PERSONS/${control_command#NOTEBOOK:PERSONS:}"
 	exit 0
 	;;
 esac

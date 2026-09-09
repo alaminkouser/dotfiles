@@ -1,0 +1,4 @@
+theme = "./theme/main.toml"
+
+watch = true
+editor = "nvim +{$line}"

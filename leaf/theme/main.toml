@@ -1,0 +1,4 @@
+base = "ocean"
+
+[ui]
+content_bg = "#000000"
