@@ -7,6 +7,7 @@ conda install\
   conda-forge::eza\
   conda-forge::fastfetch\
   conda-forge::gh\
+  conda-forge::glow\
   conda-forge::go-gum\
   conda-forge::httpie\
   conda-forge::markdownlint-cli2\

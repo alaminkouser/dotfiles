@@ -2,13 +2,17 @@
 
 [ "$(zellij action list-panes --all | grep -F ".config/zellij/control-panel" | wc -l)" -gt 1 ] && exit 0
 
+NOTEBOOK_PERSONS="$(ls $NOTEBOOK_PATH/PERSONS)"
+NOTEBOOK_PERSONS="$(printf "%s\n" "$NOTEBOOK_PERSONS" | sed "s/^/NOTEBOOK:PERSONS:/")"
+
 control_command=$(
-    printf "# PANE:NEW\n# FZF\n# CREATE NEW SESSION\n# DETACH\n# SCROLL\n# CLOSE\n%s" "$(zellij list-sessions --short | sed "s/^/SESSION:/")" | sort -f 2>/dev/null |
+    printf "# PANE:NEW\n# FZF\n# CREATE NEW SESSION\n# DETACH\n# SCROLL\nNOTEBOOK\n# CLOSE\n$NOTEBOOK_PERSONS\n%s" "$(zellij list-sessions --short | sed "s/^/SESSION:/")" | sort -f 2>/dev/null |
     gum filter \
         --placeholder "Search..." \
         --no-show-help \
         --indicator "󰫈" \
         --indicator.foreground "#F38BA8" \
+	--text.foreground "#F0C6C6" \
         --cursor-text.foreground "#F38BA8"
 )
 
@@ -27,6 +31,18 @@ fi
 if [ "$control_command" = "# CLOSE" ]; then
     exit 0
 fi
+
+if [ "$control_command" = "NOTEBOOK" ]; then
+    bat --style=plain --paging=always "$NOTEBOOK_PATH/$(cd $NOTEBOOK_PATH && fzf)"
+    exit 0
+fi
+
+case "$control_command" in
+    NOTEBOOK:PERSONS:*)
+        bat --style=plain --paging=always "$NOTEBOOK_PATH/PERSONS/${control_command#NOTEBOOK:PERSONS:}"
+	exit 0
+	;;
+esac
 
 if [ "$control_command" = "# FZF" ]; then
     zellij action write-chars "$(fzf --walker "file,dir,follow,hidden")" -p 0
