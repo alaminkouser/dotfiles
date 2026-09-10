@@ -98,7 +98,7 @@ if [ "$#" -eq 1 ] && [ "$1" = "push" ]; then
 fi
 
 if [ "$#" -eq 1 ] && [ "$1" = "open" ]; then
-    $EDITOR $NOTEBOOK_PATH/README.md
+    cd $NOTEBOOK_PATH && $EDITOR README.md && cd -
     exit 0
 fi
 
