@@ -29,3 +29,5 @@ if ! pgrep -x "aria2c" > /dev/null; then
     -x 16 \
     --dir="$HOME/STORAGE/DOWNLOADS"
 fi
+
+. "$HOME/.cargo/env"

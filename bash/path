@@ -20,3 +20,6 @@ PATH="$HOME/.local/bin/google-cloud-sdk/bin:$PATH"
 
 # solr
 PATH="$HOME/.local/bin/solr/bin:$PATH"
+
+#llama
+PATH="$HOME/.local/bin/llama:$PATH"
